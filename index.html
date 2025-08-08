@@ -83,7 +83,13 @@
 
     /* ========== Header / Nav ========== */
     header.site{position:sticky;top:0;z-index:50;background:var(--glass);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.7rem max(env(safe-area-inset-right), 16px) .7rem max(env(safe-area-inset-left), 16px);
+    }
+
     .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.02em}
     .dot{width:10px;height:10px;border-radius:50%;background: radial-gradient(circle at 40% 40%, #fff, var(--brand-1));box-shadow:0 0 12px rgba(124,58,237,.55)}
     nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem}
@@ -123,10 +129,29 @@
 
     /* Extra-small screens: reduce sizes a bit and allow buttons full width */
     @media (max-width:420px){
-      :root{ --fs-1: clamp(1.8rem, 7vw, 2.1rem); --fs-2: clamp(1.05rem, 4.5vw, 1.2rem); }
-      .cta .btn{flex:1 1 100%}
-      .h-tag{margin-top:.5rem}
+    :root{
+      --fs-1: clamp(1.8rem, 7vw, 2.1rem);
+      --fs-2: clamp(1.05rem, 4.5vw, 1.2rem);
     }
+
+    /* Bloque de botones con márgenes laterales */
+    .cta{
+      flex-wrap: nowrap;  /* no saltar línea */
+      justify-content: space-between;
+      gap: .5rem;
+      margin-left: max(env(safe-area-inset-left), 16px);
+      margin-right: max(env(safe-area-inset-right), 16px);
+    }
+
+    .cta .btn{
+      flex: 1 0 auto;
+      min-width: 44%;
+    }
+
+    .h-tag{margin-top:.5rem}
+    }
+
+
     @media (max-width:360px){
       :root{ --fs-1: 1.75rem; --fs-2: 1.05rem; }
     }
