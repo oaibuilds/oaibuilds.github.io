@@ -1,112 +1,600 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The O Project</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>oaibuilds — O-Systems</title>
+  <meta name="description" content="O-Systems by oaibuilds. Intelligent systems, agentic architectures, and tools." />
+  <link rel="canonical" href="https://oaibuilds.com/" />
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+  <!-- Social -->
+  <meta property="og:title" content="oaibuilds — O-Systems" />
+  <meta property="og:description" content="Intelligent systems & agentic architectures for an AI-driven world." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://oaibuilds.com/" />
+  <meta property="og:image" content="https://oaibuilds.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #0d0d0d;
-      color: #f5f5f5;
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1.6;
+    /* ========== Design tokens ========== */
+    :root{
+      /* colors */
+      --bg: #0b0b0d; --txt: #f2f3f5; --muted:#a9afbd; --card:#0f1117; --border:#1b1e27;
+      --brand-1:#7c3aed; --brand-2:#0d7a8d; --ok:#22c55e; --warn:#f59e0b;
+      --glass: rgba(12,12,14,.7);
+      /* typography */
+      --ff: 'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      --fs-1: clamp(2.0rem, 3.6vw, 2.8rem); /* hero */
+      --fs-2: clamp(1.15rem, 2.2vw, 1.45rem); /* section lead (slightly smaller) */
+      --fs-3: 1.02rem;                       /* body (slightly smaller) */
+      --fs-4: .9rem;                          /* small */
+      /* spacing */
+      --g-1:.5rem; --g-2:.75rem; --g-3:1rem; --g-4:1.5rem; --g-5:2rem; --g-6:3rem; --g-7:4.5rem;
+      /* radii */
+      --r-1:12px; --r-2:16px; --r-3:24px;
+      /* shadows */
+      --shadow-1: 0 1px 0 rgba(255,255,255,.02), 0 12px 40px rgba(0,0,0,.35);
     }
-    .container {
-      max-width: 760px;
-      margin: auto;
-      padding: 3rem 1.5rem;
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#ffffff; --txt:#0d0d10; --muted:#5b5f6b; --card:#f6f7fb; --border:#e6e8ef; --glass: rgba(255,255,255,.7); }
     }
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
+
+    /* ========== Base ========== */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(900px 520px at 8% -10%, rgba(124,58,237,.10), transparent),
+                              radial-gradient(900px 520px at 92% 110%, rgba(13,122,141,.10), transparent),
+                              var(--bg);color:var(--txt);font:400 var(--fs-3)/1.6 var(--ff);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+    a{color:inherit}
+    .container{max-width:1120px;margin:0 auto;padding:0 var(--g-3)}
+    .section{padding: var(--g-6) 0}
+
+    /* Focus styles */
+    :where(a,button,[tabindex]):focus{outline:2px solid var(--brand-1);outline-offset:2px;border-radius:6px}
+
+    /* ========== Skip link ========== */
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:var(--g-3);top:var(--g-3);width:auto;height:auto;padding:.5rem .75rem;background:var(--card);border:1px solid var(--border);border-radius:8px}
+
+    /* ========== Header / Nav ========== */
+    header.site{position:sticky;top:0;z-index:50;background:var(--glass);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.02em}
+    .dot{width:10px;height:10px;border-radius:50%;background: radial-gradient(circle at 40% 40%, #fff, var(--brand-1));box-shadow:0 0 12px rgba(124,58,237,.55)}
+    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:1rem}
+    nav.primary a:hover{color:var(--txt)}
+
+    /* Mobile nav (no JS) */
+    #menu-toggle{display:none}
+    .menu-btn{display:none}
+    @media (max-width:820px){
+      .menu-btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:10px;padding:.45rem .6rem;background:transparent}
+      nav.primary{position:absolute;inset:55px 0 auto 0;background:var(--card);border-bottom:1px solid var(--border);display:none}
+      #menu-toggle:checked + .menu-btn + nav.primary{display:block}
+      nav.primary a{display:block;padding:.75rem var(--g-3);margin:0;border-top:1px solid var(--border)}
     }
-    .logo {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+
+    /* ========== Hero ========== */
+    .hero{display:grid;grid-template-columns:1fr;gap:var(--g-5);align-items:center;padding: var(--g-7) 0 var(--g-6)}
+    @media (min-width:900px){.hero{grid-template-columns:1.15fr .85fr}}
+    .h-title{margin:0;font-size:var(--fs-1);font-weight:700;letter-spacing:.01em}
+    .h-sub{color:var(--muted);margin:.25rem 0 0;font-size:calc(var(--fs-3) * .98)}
+    .h-tag{margin:.6rem 0 0;font-size:var(--fs-2);font-weight:600;color:var(--brand-2)}
+    .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:var(--g-4)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border:1px solid var(--border);border-radius:12px;font-weight:700;text-decoration:none}
+    .btn.primary{background:linear-gradient(90deg,var(--brand-1),var(--brand-2));border-color:transparent;color:white}
+
+    /* Highlight only the 'oaibuilds' word in H1 */
+    .brandmark{
+      background: linear-gradient(90deg,var(--brand-1),var(--brand-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight:700;
     }
-    h1 {
-      font-size: 2.2rem;
-      margin: 0.2em 0;
-      color: #00ffe0;
+    /* Prevent line break on name */
+    .nowrap{ white-space: nowrap; }
+
+    /* Orb */
+    .orbwrap{position:relative;width:min(360px,80vw);aspect-ratio:1/1;margin-inline:auto}
+    canvas#oOrb{width:100%;height:100%;display:block;border-radius:50%;box-shadow:0 0 0 1px var(--border), 0 20px 60px rgba(0,0,0,.45)}
+    .orbglow{position:absolute;inset:-8%;border-radius:50%;background:radial-gradient(40% 40% at 50% 50%, rgba(124,58,237,.25), transparent 60%);pointer-events:none}
+
+    /* ========== Cards / Grid ========== */
+    .grid{display:grid;gap:var(--g-3)}
+    @media (min-width:780px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card);border:1px solid var(--border);border-radius:var(--r-2);padding:1.25rem;box-shadow:var(--shadow-1);opacity:0;transform:translateY(8px)}
+    .card.revealed{opacity:1;transform:none;transition:transform .6s cubic-bezier(.2,.7,.2,1), opacity .6s ease}
+    .card h2{margin:0 0 .35rem;font-size:1.1rem;color:var(--brand-2)}
+    .card p{margin:.35rem 0 .9rem;color:var(--muted)}
+
+    /* ========== Elements ========== */
+    .ai-banner{margin:var(--g-6) auto var(--g-5);padding:1rem;text-align:center;background:rgba(124,58,237,.08);border:1px solid var(--border);border-radius:12px;font-weight:500;color:var(--muted);max-width:720px}
+    .badges{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:.5rem}
+    .badge{padding:.35rem .55rem;border:1px solid var(--border);border-radius:999px;font-size:.85rem;color:var(--muted);background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0))}
+    .divider{height:1px;background:linear-gradient(90deg, transparent, var(--border), transparent);margin:var(--g-5) 0}
+    .quote{margin:.75rem 0 1rem;padding:.75rem 1rem;border-left:3px solid var(--brand-2);background:rgba(13,122,141,.06);font-style:italic;color:var(--txt);border-radius:8px}
+
+    /* ========== Interactive Timeline ========== */
+    .timelineX{margin-top:var(--g-4)}
+    .tl-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:var(--g-2)}
+    .tl-filters{display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{padding:.35rem .6rem;border:1px solid var(--border);border-radius:999px;background:transparent;font:600 .9rem var(--ff);color:var(--muted);cursor:pointer}
+    .chip[aria-pressed="true"], .chip.active{background:linear-gradient(90deg,var(--brand-1),var(--brand-2));border-color:transparent;color:#fff}
+    .tl-nav{display:flex;align-items:center;gap:.35rem}
+    .tl-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);border-radius:10px;background:transparent;cursor:pointer}
+    .tl-btn:hover{border-color:var(--brand-1)}
+    .tl-year{min-width:84px;text-align:center;color:var(--muted);font-weight:700}
+    .tl-range{display:none}
+    @media (min-width:900px){ .tl-range{display:block;width:220px} }
+
+    .tl-viewport{position:relative;overflow-x:auto;overflow-y:hidden;display:flex;gap:var(--g-3);scroll-snap-type:x mandatory;scroll-padding:var(--g-3);padding-bottom:var(--g-3)}
+    .tl-viewport::-webkit-scrollbar{height:10px}
+    .tl-viewport::-webkit-scrollbar-thumb{background:linear-gradient(90deg,var(--brand-1),var(--brand-2));border-radius:8px}
+
+    .tl-card{min-width:min(360px,85vw);max-width:440px;scroll-snap-align:start;position:relative}
+    .tl-card .meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem}
+    .tl-card time{font-weight:700;color:#fff}
+    .tl-card .cat{font-weight:700;font-size:.8rem;color:var(--muted)}
+    .tl-card h3{margin:.25rem 0 .25rem;font-size:1.05rem;color:var(--brand-2)}
+    .tl-card .detail{margin:.25rem 0 0;color:var(--muted)}
+    .tl-card .badges{justify-content:flex-start}
+
+    /* Expandable details */
+    .tl-card [data-collapsible]{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .tl-card[aria-expanded="true"] [data-collapsible]{max-height:180px}
+    .tl-card .toggle{position:absolute;right:.8rem;top:.8rem}
+
+    /* Connection line (decorative) */
+    .tl-viewport::before{content:"";position:absolute;left:0;right:0;top:28px;height:2px;background:linear-gradient(90deg, transparent, var(--border), transparent)}
+    .tl-card::before{content:"";position:absolute;left:22px;top:22px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 40% 40%, #fff, var(--brand-1));box-shadow:0 0 10px rgba(124,58,237,.5)}
+
+    /* Vertical fallback on small screens */
+    @media (max-width:640px){
+      .tl-viewport{flex-direction:column;overflow-x:hidden;overflow-y:visible;scroll-snap-type:none}
+      .tl-card{min-width:100%;max-width:none}
+      .tl-viewport::before{display:none}
+      .tl-card::before{left:16px}
     }
-    p.tagline {
-      font-size: 1.1rem;
-      color: #aaa;
-    }
-    .section {
-      margin-top: 3rem;
-    }
-    h2 {
-      font-size: 1.4rem;
-      color: #1e90ff;
-      margin-bottom: 0.5rem;
-    }
-    a {
-      color: #00ffe0;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      padding-left: 1.2em;
-      margin: 0.5rem 0;
-    }
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-    }
+
+    /* ========== Roadmap ========== */
+    .roadmap{display:grid;gap:var(--g-3)}
+    @media (min-width:900px){.roadmap{grid-template-columns:1fr 1fr 1fr}}
+    .stage h4{margin:0 0 .3rem;font-size:1rem;color:var(--brand-1)}
+    .stage ul{margin:.25rem 0 0;padding-left:1.1rem}
+
+    /* ========== Footer ========== */
+    footer{padding: var(--g-6) 0 var(--g-7);text-align:center;color:var(--muted)}
+    .links{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+    .link{color:var(--brand-2);text-decoration:none;font-weight:600;position:relative}
+    .link::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:linear-gradient(90deg, var(--brand-1), var(--brand-2));transition:width .25s ease}
+    .link:hover::after{width:100%}
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){.card{transition:none !important}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div style="text-align: center; margin-bottom: 2.5rem;">
-        <div style="font-size: 4.5rem; font-weight: bold; color: #00ffe0;">O</div>
-        <div style="font-size: 1.8rem; font-weight: 600; color: #00ffe0;">The O Project</div>
-        <div style="font-size: 0.95rem; color: #888; margin-top: 0.5rem;">
-          Intelligent systems & agentic architectures for an AI–driven world.
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site">
+    <div class="container nav">
+      <div class="brand" aria-label="oaibuilds home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>oaibuilds · O-Systems</span>
+      </div>
+
+      <!-- Mobile toggle -->
+      <input type="checkbox" id="menu-toggle" aria-label="Open menu" />
+      <label for="menu-toggle" class="menu-btn" aria-controls="primary-nav" aria-expanded="false">Menu</label>
+
+      <nav id="primary-nav" class="primary" aria-label="Primary">
+        <div class="container" style="padding:0 var(--g-3)">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="https://github.com/oaibuilds" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="container hero" id="home">
+      <div>
+        <h1 class="h-title">O-Systems by <span class="brandmark">oaibuilds</span></h1>
+        <p class="h-sub">Intelligent systems & agentic architectures for an <strong>AI-driven world</strong> — <span class="nowrap"><strong>Oriol Martinez</strong></span></p>
+        <p class="h-tag">From Zero to Scalable Intelligence<br>— Starting at 30</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">Explore Projects</a>
+          <a class="btn" href="mailto:oriol@oaibuilds.com">Contact</a>
         </div>
       </div>
-    </header>
+      <div class="orbwrap" aria-hidden="true">
+        <canvas id="oOrb"></canvas>
+        <div class="orbglow"></div>
+      </div>
+    </section>
 
-    <div class="section">
-      <h2>🚀 Active Module: O-Scanner</h2>
-      <p>A modular GPT-powered agent for intelligent document classification and organization.</p>
-      <p><a href="https://github.com/oaibuilds/O-Scanner" target="_blank">→ View on GitHub</a></p>
+    <!-- Banner -->
+    <section class="container">
+      <div class="ai-banner">
+        <p>Minimalism meets intelligence — Building systems that think, adapt, and scale.</p>
+        <div class="badges" aria-label="stack badges">
+          <span class="badge">Python</span>
+          <span class="badge">AI Agents</span>
+          <span class="badge">Automation</span>
+          <span class="badge">Backtesting</span>
+          <span class="badge">Orchestration</span>
+        </div>
+      </div>
+      <div class="divider" role="presentation"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container section">
+      <article class="card reveal">
+        <header>
+          <h2>About</h2>
+        </header>
+        <p><strong>I'm Oriol Martinez.</strong> At 30, I started from zero to build a solid foundation in AI and intelligent automation.</p>
+        <p>Between <strong>2022–2024</strong>, I completed a degree in Multiplatform Application Development with <strong>Honours</strong> (top GPA), plus an internship at <strong>Inetum</strong> (backend, APIs, microservices). That gave me core software engineering discipline.</p>
+        <p>Today, I’m an <strong>AI Engineering student</strong> at the <strong>Polytechnic University of Catalonia (UPC)</strong> focused on vertical AI agents and Python-based automation systems.</p>
+        <blockquote class="quote">Real learning starts when ideas are built. Build → Test → Improve → Repeat. Each loop compounds into scalable, intelligent systems.</blockquote>
+        <p>I’m also learning Mandarin to broaden my global perspective and connect with diverse innovation ecosystems.</p>
+
+        <!-- Interactive Timeline -->
+        <div class="timelineX" id="timeline" aria-label="Career timeline">
+          <div class="tl-controls">
+            <div class="tl-filters" role="toolbar" aria-label="Filter timeline">
+              <button class="chip" data-filter="all" aria-pressed="true">All</button>
+              <button class="chip" data-filter="education">Education</button>
+              <button class="chip" data-filter="project">Projects</button>
+              <button class="chip" data-filter="award">Award</button>
+            </div>
+            <div class="tl-nav">
+              <button class="tl-btn" data-dir="-1" aria-label="Previous item">◀</button>
+              <div class="tl-year" aria-live="polite">Year: <span id="tlYear">—</span></div>
+              <button class="tl-btn" data-dir="1" aria-label="Next item">▶</button>
+              <input class="tl-range" id="tlRange" type="range" min="0" max="0" value="0" aria-label="Scrub timeline" />
+            </div>
+          </div>
+
+          <div class="tl-viewport" id="tlView">
+            <!-- 2022–2024 DAM + Inetum -->
+            <article class="card tl-card reveal" tabindex="0" aria-expanded="false" data-year="2022" data-cat="education" id="t-2022">
+              <div class="meta"><time>2022–2024</time><span class="cat">Education</span></div>
+              <h3>DAM (Honours) + Inetum internship</h3>
+              <p class="detail">Backend, APIs, microservices; strong software engineering base.</p>
+              <div class="badges"><span class="badge">Java</span><span class="badge">Spring</span><span class="badge">APIs</span></div>
+              <button class="tl-btn toggle" aria-label="Expand details">＋</button>
+              <div data-collapsible>
+                <p class="detail">Graduated top of class; applied clean architecture, CI, and testing habits.</p>
+              </div>
+            </article>
+
+            <!-- 2024 UPC start -->
+            <article class="card tl-card reveal" tabindex="0" aria-expanded="false" data-year="2024" data-cat="education" id="t-2024">
+              <div class="meta"><time>2024</time><span class="cat">Education</span></div>
+              <h3>Started AI Engineering at UPC</h3>
+              <p class="detail">Focus: intelligent systems, automation, data structures & algorithms.</p>
+              <div class="badges"><span class="badge">Python</span><span class="badge">C++</span><span class="badge">Algorithms</span></div>
+              <button class="tl-btn toggle" aria-label="Expand details">＋</button>
+              <div data-collapsible>
+                <p class="detail">Built foundations in reasoning, modeling & systems automation.</p>
+              </div>
+            </article>
+
+            <!-- 2025 HUST + O-Systems -->
+            <article class="card tl-card reveal" tabindex="0" aria-expanded="false" data-year="2025" data-cat="award" id="t-2025-hust">
+              <div class="meta"><time>2025</time><span class="cat">Award</span></div>
+              <h3>CSC + HUST MSE Scholarship (Wuhan)</h3>
+              <p class="detail">Summer program at HUST (Huazhong University of Science & Technology).</p>
+              <div class="badges"><span class="badge">Robotics</span><span class="badge">Autonomy</span></div>
+              <button class="tl-btn toggle" aria-label="Expand details">＋</button>
+              <div data-collapsible>
+                <p class="detail">Focus (2 lines): AI-enabled robotic design & motion control; AV perception, localization, prediction & planning. Hands-on with humanoid & industrial robots; multimodal generation for recommendation.</p>
+              </div>
+            </article>
+
+            <article class="card tl-card reveal" tabindex="0" aria-expanded="false" data-year="2025" data-cat="project" id="t-2025-oproject">
+              <div class="meta"><time>2025</time><span class="cat">Project</span></div>
+              <h3>Launched “The O Project”</h3>
+              <p class="detail">Vertical AI agents + orchestration layer for real-world tasks.</p>
+              <div class="badges"><span class="badge">Agents</span><span class="badge">Orchestration</span></div>
+              <button class="tl-btn toggle" aria-label="Expand details">＋</button>
+              <div data-collapsible>
+                <p class="detail">First modules: O-Scanner (docs) and O-Trader (signals/backtests).</p>
+              </div>
+            </article>
+
+            <!-- 2026 placeholder goals -->
+            <article class="card tl-card reveal" tabindex="0" aria-expanded="false" data-year="2026" data-cat="project" id="t-2026">
+              <div class="meta"><time>2026</time><span class="cat">Project</span></div>
+              <h3>Scale agent stack</h3>
+              <p class="detail">O-Core (logic) + O-Stream (pipelines) + O-Vault (memory).</p>
+              <div class="badges"><span class="badge">Pipelines</span><span class="badge">RAG</span><span class="badge">Eval</span></div>
+              <button class="tl-btn toggle" aria-label="Expand details">＋</button>
+              <div data-collapsible>
+                <p class="detail">Tighten evaluation loops, reliability, and latency for production.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Projects intro -->
+    <section id="projects" class="container section">
+      <article class="card reveal">
+        <header><h2>Projects</h2></header>
+        <p><strong>The O Project</strong> is a strategic ecosystem of vertical AI agents.<br><br>
+        Each agent is laser-focused on a single domain (documents, markets, data streams) yet designed to interoperate through a shared orchestration layer.</p>
+        <p>The goal: modular pieces that can be combined into scalable, intelligent systems with measurable real-world impact.</p>
+      </article>
+
+      <div class="grid cols-2" style="margin-top:var(--g-3)">
+        <article class="card reveal">
+          <h2>O-Scanner</h2>
+          <p>Modular GPT-powered agent for intelligent document classification and organization.</p>
+          <a class="btn" href="https://github.com/oaibuilds/O-Scanner" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+        <article class="card reveal">
+          <h2>O-Trader</h2>
+          <p>Disciplined, AI-aided trading system for signal execution, backtesting, and capital growth.</p>
+          <a class="btn" href="https://github.com/oaibuilds/O-Trader" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap" class="container section">
+      <article class="card reveal">
+        <header><h2>Roadmap 2025–2026</h2></header>
+        <div class="roadmap">
+          <div class="stage">
+            <h4>Now</h4>
+            <ul>
+              <li><strong>O-Trader</strong> — Market automation & signal agents</li>
+              <li><strong>O-Scanner</strong> — PDF triage & routing</li>
+            </ul>
+          </div>
+          <div class="stage">
+            <h4>Next</h4>
+            <ul>
+              <li><strong>O-Stream</strong> — LLM-driven insight & content pipelines</li>
+              <li><strong>O-Core</strong> — Modular orchestration & system logic</li>
+            </ul>
+          </div>
+          <div class="stage">
+            <h4>Later</h4>
+            <ul>
+              <li><strong>O-Vault</strong> — Structured memory & knowledge systems</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="links">
+        <a class="link" href="mailto:oriol@oaibuilds.com">oriol@oaibuilds.com</a>
+        <span aria-hidden="true">·</span>
+        <a class="link" href="https://www.linkedin.com/in/oriolmartz" target="_blank" rel="noopener">LinkedIn</a>
+        <span aria-hidden="true">·</span>
+        <a class="link" href="https://github.com/oaibuilds" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div style="margin-top:.5rem">© 2025 oaibuilds.com</div>
     </div>
+  </footer>
 
-    <div class="section">
-      <h2>🚀 Active Module: O-Trader</h2>
-      <p>A disciplined AI-driven trading system for signal execution, backtesting, and capital growth.</p>
-      <p><a href="https://github.com/oaibuilds/O-Trader" target="_blank">→ View on GitHub</a></p>
-    </div>
+  <script>
+    document.documentElement.classList.remove('no-js');
 
-    <div class="section">
-      <h2>🧭 Roadmap 2025–2026</h2>
-      <ul>
-        <li>O-Trader — Market automation & signal agents</li>
-        <li>O-Stream — LLM-driven insight & content pipelines</li>
-        <li>O-Core — Modular orchestration & system logic</li>
-        <li>O-Vault — Structured memory & knowledge systems</li>
-      </ul>
-    </div>
+    // Reveal-on-scroll
+    const toReveal = document.querySelectorAll('.reveal, .card');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    toReveal.forEach(el=>io.observe(el));
 
-    <div class="section">
-      <h2>👤 About</h2>
-      <p>Created by Oriol Martinez — Building intelligent systems, agent-based architectures and long-term strategic positioning in global tech ecosystems.</p>
-    </div>
+    // Orb (respects reduced motion)
+    (function(){
+      const canvas = document.getElementById('oOrb');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let dpr=1, t=0, mx=0, my=0;
 
-    <footer>
-      <p>&copy; 2025 oaibuilds.com</p>
-      <p>Contact: <a href="mailto:oriol@oaibuilds.com">oriol@oaibuilds.com</a> · <a href="https://www.linkedin.com/in/oriolmartz" target="_blank">LinkedIn</a></p>
-    </footer>
-  </div>
+      function resize(){
+        dpr = Math.max(1, Math.min(2, window.devicePixelRatio||1));
+        const r = canvas.getBoundingClientRect();
+        canvas.width = Math.floor(r.width * dpr);
+        canvas.height = Math.floor(r.height * dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      resize(); addEventListener('resize', resize);
+
+      canvas.addEventListener('mousemove', (e)=>{ const r = canvas.getBoundingClientRect(); mx=(e.clientX-r.left)/r.width-.5; my=(e.clientY-r.top)/r.height-.5; });
+      canvas.addEventListener('mouseleave', ()=>{ mx=0; my=0; });
+
+      function draw(){
+        const r = canvas.getBoundingClientRect(); const cw=r.width, ch=r.height;
+        ctx.clearRect(0,0,cw,ch);
+
+        // glow bg
+        const bg=ctx.createRadialGradient(cw*.5+mx*10, ch*.5+my*10, 20, cw*.5, ch*.5, Math.max(cw,ch)*.6);
+        bg.addColorStop(0,'rgba(124,58,237,.25)'); bg.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=bg; ctx.beginPath(); ctx.arc(cw*.5, ch*.5, cw*.48, 0, Math.PI*2); ctx.fill();
+
+        // disc
+        const disc=ctx.createRadialGradient(cw*.45+mx*6, ch*.45+my*6, 10, cw*.5, ch*.5, cw*.35);
+        disc.addColorStop(0,'#0e0f15'); disc.addColorStop(1,'#0b0c12');
+        ctx.fillStyle=disc; ctx.beginPath(); ctx.arc(cw*.5, ch*.5, cw*.44, 0, Math.PI*2); ctx.fill();
+
+        // ring shadow
+        ctx.lineWidth=10; ctx.strokeStyle='#121826'; ctx.beginPath(); ctx.arc(cw*.5, ch*.5, cw*.30, 0, Math.PI*2); ctx.stroke();
+
+        // accent arc
+        const ang = rm ? 0 : t*.03; ctx.save(); ctx.translate(cw*.5, ch*.5); ctx.rotate(ang);
+        const grad=ctx.createLinearGradient(-cw*.3,0,cw*.3,0); grad.addColorStop(0,'#7c3aed'); grad.addColorStop(1,'#0d7a8d');
+        ctx.strokeStyle=grad; ctx.lineWidth=12; ctx.lineCap='round';
+        ctx.beginPath(); ctx.arc(0,0,cw*.30,-Math.PI*.25, Math.PI*.35); ctx.stroke(); ctx.restore();
+
+        if(!rm){
+          for(let i=0;i<10;i++){ const a=ang+i*(Math.PI*2/10); const x=cw*.5+Math.cos(a)*cw*.30; const y=ch*.5+Math.sin(a)*cw*.30; ctx.fillStyle='rgba(124,58,237,'+(0.10+0.08*Math.sin(t*.04+i))+')'; ctx.beginPath(); ctx.arc(x,y,2.2,0,Math.PI*2); ctx.fill(); }
+          t++; requestAnimationFrame(draw);
+        }
+      }
+      draw();
+    })();
+
+    // ===== Interactive Timeline Logic =====
+    (function(){
+      const view = document.getElementById('tlView');
+      if(!view) return;
+      const items = [...view.querySelectorAll('.tl-card')];
+      const prevBtn = document.querySelector('.tl-btn[data-dir="-1"]');
+      const nextBtn = document.querySelector('.tl-btn[data-dir="1"]');
+      const yearEl = document.getElementById('tlYear');
+      const range = document.getElementById('tlRange');
+      const chips = [...document.querySelectorAll('.chip')];
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      let active = 0; // index in visible items
+      let visible = items.slice();
+
+      // Setup range
+      function syncRange(){
+        range.max = Math.max(visible.length - 1, 0);
+        range.value = Math.min(active, visible.length - 1);
+      }
+
+      // Scroll helpers
+      function scrollToIndex(i){
+        if(!visible.length) return;
+        active = Math.max(0, Math.min(i, visible.length - 1));
+        const el = visible[active];
+        el.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', inline: 'start', block: 'nearest'});
+        updateYear(el);
+        syncRange();
+      }
+
+      function updateYear(el){
+        const y = el?.getAttribute('data-year') || '—';
+        yearEl.textContent = y;
+      }
+
+      // Observe which card is centered
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting && en.intersectionRatio > 0.6){
+            const idx = visible.indexOf(en.target);
+            if(idx !== -1){ active = idx; updateYear(en.target); syncRange(); }
+          }
+        })
+      }, { root: view, threshold: [0.6] });
+      items.forEach(it=>obs.observe(it));
+
+      // Prev/Next
+      prevBtn?.addEventListener('click', ()=> scrollToIndex(active - 1));
+      nextBtn?.addEventListener('click', ()=> scrollToIndex(active + 1));
+      range?.addEventListener('input', e=> scrollToIndex(parseInt(e.target.value,10)) );
+
+      // Click/keyboard to expand
+      view.addEventListener('click', (e)=>{
+        const card = e.target.closest('.tl-card');
+        const toggle = e.target.closest('.toggle');
+        if(toggle){
+          const expanded = card.getAttribute('aria-expanded') === 'true';
+          card.setAttribute('aria-expanded', String(!expanded));
+          toggle.textContent = expanded ? '＋' : '—';
+        }
+      });
+      view.addEventListener('keydown',(e)=>{
+        const card = e.target.closest?.('.tl-card');
+        if(!card) return;
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          const toggle = card.querySelector(' .toggle');
+          toggle?.click();
+        } else if(e.key === 'ArrowRight'){ scrollToIndex(active + 1); }
+        else if(e.key === 'ArrowLeft'){ scrollToIndex(active - 1); }
+      });
+
+      // Drag to scroll (desktop)
+      let isDown=false, startX=0, scrollLeft=0;
+      view.addEventListener('mousedown', (e)=>{ isDown=true; startX=e.pageX - view.offsetLeft; scrollLeft=view.scrollLeft; view.style.cursor='grabbing'; });
+      view.addEventListener('mouseleave', ()=>{ isDown=false; view.style.cursor='auto'; });
+      view.addEventListener('mouseup', ()=>{ isDown=false; view.style.cursor='auto'; });
+      view.addEventListener('mousemove', (e)=>{
+        if(!isDown) return; e.preventDefault();
+        const x = e.pageX - view.offsetLeft; const walk = (x - startX) * 1.1; view.scrollLeft = scrollLeft - walk;
+      });
+
+      // Filters
+      function setFilter(cat){
+        chips.forEach(c=> c.setAttribute('aria-pressed', String(c.dataset.filter===cat || (cat==='all' && c.dataset.filter==='all'))));
+        visible = [];
+        items.forEach((it)=>{
+          const ok = (cat==='all') || it.dataset.cat===cat;
+          it.style.display = ok ? '' : 'none';
+          if(ok) visible.push(it);
+        });
+        // reset active to first visible
+        active = 0;
+        syncRange();
+        if(visible[0]){ updateYear(visible[0]); visible[0].scrollIntoView({behavior: 'auto', inline:'start', block:'nearest'}); }
+      }
+      chips.forEach(c=> c.addEventListener('click', ()=> setFilter(c.dataset.filter)) );
+
+      // Deep link to a specific year/card if hash present
+      function deepLink(){
+        const id = location.hash.slice(1);
+        if(!id) return;
+        const el = document.getElementById(id);
+        if(el){
+          const cat = el.dataset.cat;
+          if(cat) setFilter(cat); // ensure visible
+          const idx = visible.indexOf(el);
+          if(idx !== -1) scrollToIndex(idx);
+        }
+      }
+      window.addEventListener('hashchange', deepLink);
+      setTimeout(()=>{ updateYear(visible[0]); syncRange(); deepLink(); }, 0);
+    })();
+  </script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Oriol Martinez",
+    "url": "https://oaibuilds.com/",
+    "sameAs": [
+      "https://github.com/oaibuilds",
+      "https://www.linkedin.com/in/oriolmartz"
+    ],
+    "jobTitle": "AI Engineering Student",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Polytechnic University of Catalonia (UPC)"
+    }
+  }
+  </script>
 </body>
 </html>
