@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>oaibuilds — O-Systems</title>
   <meta name="description" content="O-Systems by oaibuilds. Intelligent systems, agentic architectures, and tools." />
   <link rel="canonical" href="https://oaibuilds.com/" />
@@ -28,14 +28,14 @@
     /* ========== Design tokens ========== */
     :root{
       /* colors */
-      --bg: #0b0b0d; --txt: #f2f3f5; --muted:#a9afbd; --card:#0f1117; --border:#1b1e27;
+      --bg:#0b0b0d; --txt:#f2f3f5; --muted:#a9afbd; --card:#0f1117; --border:#1b1e27;
       --brand-1:#7c3aed; --brand-2:#0d7a8d; --ok:#22c55e; --warn:#f59e0b;
       --glass: rgba(12,12,14,.7);
       /* typography */
-      --ff: 'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      --ff:'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       --fs-1: clamp(2.0rem, 3.6vw, 2.8rem); /* hero */
-      --fs-2: clamp(1.15rem, 2.2vw, 1.45rem); /* section lead (slightly smaller) */
-      --fs-3: 1.02rem;                       /* body (slightly smaller) */
+      --fs-2: clamp(1.15rem, 2.2vw, 1.45rem); /* section lead */
+      --fs-3: 1.02rem;                        /* body */
       --fs-4: .9rem;                          /* small */
       /* spacing */
       --g-1:.5rem; --g-2:.75rem; --g-3:1rem; --g-4:1.5rem; --g-5:2rem; --g-6:3rem; --g-7:4.5rem;
@@ -51,11 +51,27 @@
     /* ========== Base ========== */
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(900px 520px at 8% -10%, rgba(124,58,237,.10), transparent),
-                              radial-gradient(900px 520px at 92% 110%, rgba(13,122,141,.10), transparent),
-                              var(--bg);color:var(--txt);font:400 var(--fs-3)/1.6 var(--ff);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 520px at 8% -10%, rgba(124,58,237,.10), transparent),
+        radial-gradient(900px 520px at 92% 110%, rgba(13,122,141,.10), transparent),
+        var(--bg);
+      color:var(--txt);
+      font:400 var(--fs-3)/1.6 var(--ff);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
     a{color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 var(--g-3)}
+
+    /* Safe container with mobile-friendly side padding + notches */
+    .container{
+      max-width:1120px;
+      margin:0 auto;
+      padding-left: max(env(safe-area-inset-left), clamp(16px, 6vw, 32px));
+      padding-right:max(env(safe-area-inset-right), clamp(16px, 6vw, 32px));
+    }
     .section{padding: var(--g-6) 0}
 
     /* Focus styles */
@@ -80,17 +96,18 @@
       .menu-btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:10px;padding:.45rem .6rem;background:transparent}
       nav.primary{position:absolute;inset:55px 0 auto 0;background:var(--card);border-bottom:1px solid var(--border);display:none}
       #menu-toggle:checked + .menu-btn + nav.primary{display:block}
-      nav.primary a{display:block;padding:.75rem var(--g-3);margin:0;border-top:1px solid var(--border)}
+      nav.primary .container{padding-left:max(env(safe-area-inset-left), clamp(16px,6vw,32px));padding-right:max(env(safe-area-inset-right), clamp(16px,6vw,32px))}
+      nav.primary a{display:block;padding:.75rem 0;margin:0;border-top:1px solid var(--border)}
     }
 
     /* ========== Hero ========== */
     .hero{display:grid;grid-template-columns:1fr;gap:var(--g-5);align-items:center;padding: var(--g-7) 0 var(--g-6)}
     @media (min-width:900px){.hero{grid-template-columns:1.15fr .85fr}}
-    .h-title{margin:0;font-size:var(--fs-1);font-weight:700;letter-spacing:.01em}
-    .h-sub{color:var(--muted);margin:.25rem 0 0;font-size:calc(var(--fs-3) * .98)}
-    .h-tag{margin:.6rem 0 0;font-size:var(--fs-2);font-weight:600;color:var(--brand-2)}
+    .h-title{margin:0;font-size:var(--fs-1);font-weight:700;letter-spacing:.01em;line-height:1.15}
+    .h-sub{color:var(--muted);margin:.35rem 0 0;font-size:calc(var(--fs-3) * .98)}
+    .h-tag{margin:.7rem 0 0;font-size:var(--fs-2);font-weight:600;color:var(--brand-2)}
     .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:var(--g-4)}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border:1px solid var(--border);border-radius:12px;font-weight:700;text-decoration:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem 1rem;border:1px solid var(--border);border-radius:12px;font-weight:700;text-decoration:none}
     .btn.primary{background:linear-gradient(90deg,var(--brand-1),var(--brand-2));border-color:transparent;color:white}
 
     /* Highlight only the 'oaibuilds' word in H1 */
@@ -103,6 +120,16 @@
     }
     /* Prevent line break on name */
     .nowrap{ white-space: nowrap; }
+
+    /* Extra-small screens: reduce sizes a bit and allow buttons full width */
+    @media (max-width:420px){
+      :root{ --fs-1: clamp(1.8rem, 7vw, 2.1rem); --fs-2: clamp(1.05rem, 4.5vw, 1.2rem); }
+      .cta .btn{flex:1 1 100%}
+      .h-tag{margin-top:.5rem}
+    }
+    @media (max-width:360px){
+      :root{ --fs-1: 1.75rem; --fs-2: 1.05rem; }
+    }
 
     /* Orb */
     .orbwrap{position:relative;width:min(360px,80vw);aspect-ratio:1/1;margin-inline:auto}
@@ -125,7 +152,9 @@
     .quote{margin:.75rem 0 1rem;padding:.75rem 1rem;border-left:3px solid var(--brand-2);background:rgba(13,122,141,.06);font-style:italic;color:var(--txt);border-radius:8px}
 
     /* ========== Interactive Timeline ========== */
-    .timelineX{margin-top:var(--g-4)}
+    .timelineX{
+        margin-top: var(--g-5);   /* +16px aprox respecto a antes */
+        }
     .tl-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:var(--g-2)}
     .tl-filters{display:flex;flex-wrap:wrap;gap:.5rem}
     .chip{padding:.35rem .6rem;border:1px solid var(--border);border-radius:999px;background:transparent;font:600 .9rem var(--ff);color:var(--muted);cursor:pointer}
@@ -199,7 +228,7 @@
       <label for="menu-toggle" class="menu-btn" aria-controls="primary-nav" aria-expanded="false">Menu</label>
 
       <nav id="primary-nav" class="primary" aria-label="Primary">
-        <div class="container" style="padding:0 var(--g-3)">
+        <div class="container">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#roadmap">Roadmap</a>
@@ -245,9 +274,7 @@
     <!-- About -->
     <section id="about" class="container section">
       <article class="card reveal">
-        <header>
-          <h2>About</h2>
-        </header>
+        <header><h2>About</h2></header>
         <p><strong>I'm Oriol Martinez.</strong> At 30, I started from zero to build a solid foundation in AI and intelligent automation.</p>
         <p>Between <strong>2022–2024</strong>, I completed a degree in Multiplatform Application Development with <strong>Honours</strong> (top GPA), plus an internship at <strong>Inetum</strong> (backend, APIs, microservices). That gave me core software engineering discipline.</p>
         <p>Today, I’m an <strong>AI Engineering student</strong> at the <strong>Polytechnic University of Catalonia (UPC)</strong> focused on vertical AI agents and Python-based automation systems.</p>
@@ -477,13 +504,11 @@
       let active = 0; // index in visible items
       let visible = items.slice();
 
-      // Setup range
       function syncRange(){
         range.max = Math.max(visible.length - 1, 0);
         range.value = Math.min(active, visible.length - 1);
       }
 
-      // Scroll helpers
       function scrollToIndex(i){
         if(!visible.length) return;
         active = Math.max(0, Math.min(i, visible.length - 1));
@@ -498,7 +523,6 @@
         yearEl.textContent = y;
       }
 
-      // Observe which card is centered
       const obs = new IntersectionObserver((entries)=>{
         entries.forEach(en=>{
           if(en.isIntersecting && en.intersectionRatio > 0.6){
@@ -509,12 +533,10 @@
       }, { root: view, threshold: [0.6] });
       items.forEach(it=>obs.observe(it));
 
-      // Prev/Next
       prevBtn?.addEventListener('click', ()=> scrollToIndex(active - 1));
       nextBtn?.addEventListener('click', ()=> scrollToIndex(active + 1));
       range?.addEventListener('input', e=> scrollToIndex(parseInt(e.target.value,10)) );
 
-      // Click/keyboard to expand
       view.addEventListener('click', (e)=>{
         const card = e.target.closest('.tl-card');
         const toggle = e.target.closest('.toggle');
@@ -554,21 +576,20 @@
           it.style.display = ok ? '' : 'none';
           if(ok) visible.push(it);
         });
-        // reset active to first visible
         active = 0;
         syncRange();
         if(visible[0]){ updateYear(visible[0]); visible[0].scrollIntoView({behavior: 'auto', inline:'start', block:'nearest'}); }
       }
       chips.forEach(c=> c.addEventListener('click', ()=> setFilter(c.dataset.filter)) );
 
-      // Deep link to a specific year/card if hash present
+      // Deep link
       function deepLink(){
         const id = location.hash.slice(1);
         if(!id) return;
         const el = document.getElementById(id);
         if(el){
           const cat = el.dataset.cat;
-          if(cat) setFilter(cat); // ensure visible
+          if(cat) setFilter(cat);
           const idx = visible.indexOf(el);
           if(idx !== -1) scrollToIndex(idx);
         }
