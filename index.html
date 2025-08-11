@@ -210,6 +210,35 @@
       .connector{ left: -12px }
       /* year-header ya es estático en mobile */
     }
+    /* ===== Mobile timeline fixes (override) ===== */
+    @media (max-width: 920px){
+      /* 1) De 2 columnas a 1 y separaciones correctas */
+      .timeline{ grid-template-columns: 1fr; gap: var(--g-3); }
+
+      /* 2) Rail sin sticky ni barra de progreso y con margen inferior */
+      .rail{ position: static; height: auto; margin-bottom: var(--g-4); }
+      .rail .progresswrap{ display: none; }
+
+      /* 3) Lista sin scroll interno ni snap; un padding para bullets */
+      .list{
+        max-height: none;             /* <- quita el scroll interno */
+        overflow: visible;
+        scroll-snap-type: none;
+        -webkit-overflow-scrolling: auto;
+        padding-left: 14px;           /* deja sitio al bullet/connector */
+      }
+
+      /* 4) Tarjetas sin snap */
+      .tcard{ scroll-snap-align: none; }
+
+      /* 5) Reposicionar bullet y conector más cerca del borde */
+      .tcard::before{ left: -10px; }
+      .connector{ left: -4px; }
+
+      /* 6) Evitar margen de anclaje extra en mobile */
+      .stream .item{ scroll-margin-top: 0; }
+    }
+
 
     /* ===================== Roadmap ===================== */
     .roadmap{display:grid;gap:var(--g-3)}

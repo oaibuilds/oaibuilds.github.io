@@ -141,7 +141,9 @@ export class Timeline {
       const expanded = card.getAttribute('aria-expanded') === 'true';
       card.setAttribute('aria-expanded', String(!expanded));
       toggle.textContent = expanded ? '＋' : '—';
-      if (!this.reduced) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (!this.reduced && window.innerWidth > 920) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
   }
 

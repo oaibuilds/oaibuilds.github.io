@@ -11,7 +11,6 @@ new RevealOnScroll('.reveal, .card');
 
 // orb
 const orb = new Orb('#oOrb', { fpsCap: 60 });
-// opcional: window.orb = orb;
 
 // timeline
 const timeline = new Timeline({
@@ -20,4 +19,3 @@ const timeline = new Timeline({
   fill: '#tlFill',
   chip: '.chip',
 });
-// opcional: window.timeline = timeline;
