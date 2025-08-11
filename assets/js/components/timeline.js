@@ -75,17 +75,39 @@ export class Timeline {
   _badgeHTML(arr) { return (arr || []).map((b) => `<span class="badge">${b}</span>`).join(''); }
 
   render() {
+    // limpiar lista
     this.list.innerHTML = '';
-    const data = this.TIMELINE.filter((it) => this.currentFilter === 'all' ? true : it.cat === this.currentFilter);
-    const groups = data.reduce((acc, it) => { (acc[it.sortYear] ||= []).push(it); return acc; }, {});
+
+    // filtrar por categoría activa
+    const data = this.TIMELINE.filter((it) =>
+        this.currentFilter === 'all' ? true : it.cat === this.currentFilter
+    );
+
+    // agrupar por año
+    const groups = data.reduce((acc, it) => {
+        (acc[it.sortYear] ||= []).push(it);
+        return acc;
+    }, {});
     const orderedYears = Object.keys(groups).map(Number).sort((a, b) => a - b);
 
+    // pintar secciones por año
     orderedYears.forEach((y) => {
-      const section = document.createElement('li');
-      section.className = 'year-section';
-      const label = groups[y][0].year;
-      section.innerHTML = `<h3 id="year-${y}" class="year-header"><span class="y">${label}</span><small>Milestones</small></h3>`;
-      groups[y].forEach((it) => {
+        const section = document.createElement('li');
+        section.className = 'year-section';
+        const label = groups[y][0].year;
+
+        // header de año (con atributos accesibles para acordeón en mobile)
+        section.innerHTML = `
+        <h3 id="year-${y}" class="year-header" role="button" tabindex="0" aria-controls="year-${y}-panel">
+            <span class="y">${label}</span><small>Milestones</small>
+        </h3>
+        <div id="year-${y}-panel" class="year-panel"></div>
+        `;
+
+        const panel = section.querySelector('.year-panel');
+
+        // tarjetas del año
+        groups[y].forEach((it) => {
         const art = document.createElement('article');
         art.id = it.id;
         art.className = 'card tcard reveal';
@@ -94,29 +116,62 @@ export class Timeline {
         art.setAttribute('data-year', it.year);
         art.setAttribute('data-cat', it.cat);
         art.innerHTML = `
-          <div class="meta">
+            <div class="meta">
             <time datetime="${it.sortYear}-01-01">${it.year}</time>
             <span class="cat">${it.cat[0].toUpperCase() + it.cat.slice(1)}</span>
-          </div>
-          <h3>${it.title}</h3>
-          <p class="detail">${it.detail}</p>
-          <div class="badges" style="justify-content:flex-start">${this._badgeHTML(it.badges)}</div>
-          <button class="btn toggle" aria-label="Expand details" title="Expand">＋</button>
-          <div class="connector" aria-hidden="true"></div>
-          <div data-collapsible></div>
+            </div>
+            <h3>${it.title}</h3>
+            <p class="detail">${it.detail}</p>
+            <div class="badges" style="justify-content:flex-start">${this._badgeHTML(it.badges)}</div>
+            <button class="btn toggle" aria-label="Expand details" title="Expand">＋</button>
+            <div class="connector" aria-hidden="true"></div>
+            <div data-collapsible></div>
         `;
-        section.appendChild(art);
-      });
-      this.list.appendChild(section);
+        panel.appendChild(art);
+        });
+
+        this.list.appendChild(section);
     });
 
-    // Init year value
+    // valor inicial del indicador de año (rail)
     const first = this.list.querySelector('.tcard');
     if (this.yearEl) this.yearEl.textContent = first?.getAttribute('data-year') || '—';
 
+    // ===== Acordeón por año solo en móvil =====
+    const isMobile = matchMedia('(max-width:920px)').matches;
+    const sections = [...this.list.querySelectorAll('.year-section')];
+
+    // En móvil: solo el último año abierto por defecto; en desktop: todos "abiertos" (no colapsamos nada)
+    sections.forEach((sec, i) => {
+        sec.setAttribute('aria-expanded', isMobile ? (i === sections.length - 1 ? 'true' : 'false') : 'true');
+    });
+
+    if (isMobile) {
+        // Toggle por click/tecla en el header del año (delegado a elementos recién creados)
+        this.list.querySelectorAll('.year-header').forEach((h) => {
+        const onToggle = () => {
+            const sec = h.closest('.year-section');
+            const open = sec.getAttribute('aria-expanded') === 'true';
+            // cerrar todos y abrir solo el tocado
+            sections.forEach((s) => s.setAttribute('aria-expanded', 'false'));
+            sec.setAttribute('aria-expanded', open ? 'false' : 'true');
+        };
+        h.addEventListener('click', onToggle);
+        h.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); }
+        });
+        });
+    }
+
     // re-apply reveal
     new RevealOnScroll('.reveal, .card');
-  }
+
+    // observar tarjetas para actualizar el año en la rail al hacer scroll
+    this._observeCards();
+    }
+
+
+  
 
   _observeCards() {
     this.list.querySelectorAll('.tcard').forEach((c) => this._cardsObserver.observe(c));
