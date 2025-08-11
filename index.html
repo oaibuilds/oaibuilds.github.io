@@ -257,6 +257,69 @@
       }
     }
 
+    /* ===== Mobile timeline: single flow, no overlay, no inner scroll ===== */
+    @media (max-width: 920px){
+      /* Documento es quien scrollea */
+      html, body { height: auto; overflow-y: auto; }
+    
+      /* Header no sticky/blur para evitar jank en iOS */
+      header.site{ position: static; }
+    }
+    @supports (-webkit-overflow-scrolling: touch){
+      @media (max-width: 920px){
+        header.site{
+          backdrop-filter: none !important;
+          background: var(--card) !important;
+        }
+      }
+    }
+    
+    /* Layout del timeline en móvil: rail arriba, stream debajo */
+    @media (max-width: 920px){
+      .timeline{
+        display: grid;
+        grid-template-areas:
+          "rail"
+          "stream";
+        grid-template-columns: 1fr;
+        gap: var(--g-3);
+        align-items: start; /* evita huecos */
+      }
+      .timeline .rail{
+        grid-area: rail;
+        position: static !important;
+        height: auto !important;
+        margin: 0 0 var(--g-3) 0;
+        z-index: auto; /* no se superpone */
+      }
+      .timeline .rail .progresswrap{ display:none !important; } /* sin barra en móvil */
+    
+      .stream{
+        grid-area: stream;
+        margin-top: 0 !important;
+      }
+    
+      /* Lista sin scroll interno */
+      .list{
+        max-height: none !important;
+        overflow: visible !important;
+        -webkit-overflow-scrolling: auto !important;
+        padding-left: 14px; /* espacio para bullets */
+      }
+    
+      /* Sin snap ni offsets de anclaje */
+      .tcard{ scroll-snap-align: none !important; }
+      .stream .item{ scroll-margin-top: 0; }
+    
+      /* Bullets cerca del borde, sin solapes */
+      .tcard::before{ left: -10px; }
+      .connector{ left: -4px; }
+    
+      /* El checkbox del menú fuera de flujo (no captura toques) */
+      #menu-toggle{ position:absolute; left:-9999px; }
+    }
+
+
 
     /* iOS específico: si hay soporte de momentum scrolling, apagamos el blur */
     @supports (-webkit-overflow-scrolling: touch){
