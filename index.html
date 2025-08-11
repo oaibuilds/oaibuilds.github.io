@@ -210,33 +210,49 @@
       .connector{ left: -12px }
       /* year-header ya es estático en mobile */
     }
-    /* ===== Mobile timeline fixes (override) ===== */
+    /* ===== Mobile scroll hotfix ===== */
     @media (max-width: 920px){
-      /* 1) De 2 columnas a 1 y separaciones correctas */
-      .timeline{ grid-template-columns: 1fr; gap: var(--g-3); }
+      /* Asegura scroll del documento */
+      html, body { height: auto; overflow-y: auto; }
 
-      /* 2) Rail sin sticky ni barra de progreso y con margen inferior */
-      .rail{ position: static; height: auto; margin-bottom: var(--g-4); }
-      .rail .progresswrap{ display: none; }
+      /* Evita bug de iOS con sticky + backdrop-filter */
+      header.site{ position: static; }
 
-      /* 3) Lista sin scroll interno ni snap; un padding para bullets */
+      /* El rail del timeline deja de ser sticky de verdad */
+      .timeline .rail{ position: static !important; height: auto !important; }
+
+      /* Lista sin scroll interno ni momentum en iOS */
       .list{
-        max-height: none;             /* <- quita el scroll interno */
-        overflow: visible;
-        scroll-snap-type: none;
-        -webkit-overflow-scrolling: auto;
-        padding-left: 14px;           /* deja sitio al bullet/connector */
+        max-height: none !important;
+        overflow: visible !important;
+        -webkit-overflow-scrolling: auto !important;
       }
 
-      /* 4) Tarjetas sin snap */
-      .tcard{ scroll-snap-align: none; }
+      /* Tarjetas sin snap */
+      .tcard{ scroll-snap-align: none !important; }
 
-      /* 5) Reposicionar bullet y conector más cerca del borde */
+      /* Ajuste de bullets en mobile */
       .tcard::before{ left: -10px; }
       .connector{ left: -4px; }
 
-      /* 6) Evitar margen de anclaje extra en mobile */
+      /* Evita offset raro de anclajes en mobile */
       .stream .item{ scroll-margin-top: 0; }
+    }
+
+    /* iOS específico: si hay soporte de momentum scrolling, apagamos el blur */
+    @supports (-webkit-overflow-scrolling: touch){
+      @media (max-width: 920px){
+        header.site{
+          backdrop-filter: none !important;
+          background: var(--card) !important; /* sólido para evitar jank */
+        }
+      }
+    }
+
+    /* El checkbox del menú, completamente fuera del flujo para que no “pille” toques */
+    #menu-toggle{
+      position: absolute;
+      left: -9999px;
     }
 
 
