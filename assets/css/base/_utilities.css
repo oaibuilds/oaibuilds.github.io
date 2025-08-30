@@ -1,0 +1,59 @@
+/* ===================== Utilities ===================== */
+
+/* Flexbox utility */
+.flex {
+  display: flex;
+  gap: var(--g-3);
+}
+
+/* Grid utility */
+.grid {
+  display: grid;
+  gap: var(--g-3);
+}
+
+/* Centered utility */
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Button common style */
+.btn {
+  padding: .7rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--txt);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Button primary style */
+.btn.primary {
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  color: #eaffff;
+  box-shadow: 0 10px 24px rgba(34, 211, 238, .18);
+}
+
+/* Hand cursor utility */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Hide element utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

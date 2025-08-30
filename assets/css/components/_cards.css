@@ -1,0 +1,71 @@
+/* ===================== Cards ===================== */
+
+.grid{
+  display:grid;
+  gap:var(--g-3);
+  grid-template-columns:1fr;      /* 1 col en mobile */
+}
+@media (min-width:780px){
+  .grid.cols-2{ grid-template-columns:1fr 1fr; } /* 2 cols en desktop */
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)), var(--card);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--r-2);
+  padding:1.25rem;
+  box-shadow:var(--shadow-1);
+  opacity:1;                      /* visibles por defecto */
+  transform:none;
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--g-2);
+  margin-bottom:.6rem;
+}
+
+.card-head h2{
+  margin:0;
+  font-size:1.1rem;
+  color:var(--brand-2);
+  font-weight:600;
+}
+
+.card p{
+  margin:.45rem 0 1rem;
+  color:var(--muted);
+}
+
+/* Badges + status (ojo: contenedor .tags, no .badges) */
+.tags{ display:flex; gap:.5rem; align-items:center; }
+.tags .badge{
+  padding:.25em .6em;
+  border-radius:6px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  font-size:.78rem;
+  color:var(--muted);
+}
+.status{ font-size:.85rem; font-weight:600; }
+.status.ready{ color:var(--ok); }
+.status.building{ color:var(--warn); }
+.status.soon{ color:var(--muted); }
+
+/* CTA: botones sin estirarse */
+.card .cta{ display:flex; gap:var(--g-2); flex-wrap:wrap; }
+.card .btn{ flex:0 0 auto; }      /* ¡no ocupar todo el ancho! */
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
+              var(--card-bg);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--r-2);
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  color: var(--txt); /* asegúrate que no caiga en muted */
+}
+
+

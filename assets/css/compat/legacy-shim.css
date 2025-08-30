@@ -1,0 +1,42 @@
+/* ===================== Legacy Shim (scoped) ===================== */
+
+/* Evita que el contenedor tenga fondo del legacy */
+.page-landing .container {
+  background: transparent !important;
+}
+
+/* Cards: fuerza superficie oscura aunque legacy defina blanco */
+.page-landing .card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
+    var(--card, #0c1224) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  box-shadow: var(--shadow-1, 0 12px 40px rgba(0,0,0,.35)) !important;
+  color: var(--txt, #e7eefc);
+}
+
+/* Header en landing: oscuro y sin blur para evitar “lavado” gris */
+.page-landing #site-header > header.site {
+  background: linear-gradient(180deg, rgba(10,14,26,.98), rgba(10,14,26,.96)) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Botones: asegura que el global gane a legacy */
+.page-landing .btn {
+  color: var(--txt, #e7eefc) !important;
+  border-color: rgba(255,255,255,.12) !important;
+  background: rgba(255,255,255,.03) !important;
+}
+.page-landing .btn.primary {
+  background: linear-gradient(180deg, rgba(34,211,238,.18), rgba(34,211,238,.08)) !important;
+  border-color: rgba(34,211,238,.35) !important;
+  color: #eaffff !important;
+}
+
+/* Por si el legacy tocó inputs/boxes dentro de las cards */
+.page-landing .card * {
+  --local-bg: transparent;
+  background-clip: padding-box;
+}

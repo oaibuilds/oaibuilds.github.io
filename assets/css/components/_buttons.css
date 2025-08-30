@@ -1,0 +1,80 @@
+/* ===================== Buttons (global) ===================== */
+
+/* Contenedor de CTAs */
+.cta{
+  display:flex;
+  flex-wrap:wrap;
+  gap: .75rem;                 /* antes usabas margin-left; mejor gap */
+  margin-top: var(--g-4, 1.5rem);
+}
+
+/* Botón base */
+.btn,
+a.btn,
+button.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+
+  padding:.7rem 1rem;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+
+  font-weight:700;
+  text-decoration:none;
+  color:var(--txt, #e7eefc);
+  background: rgba(255,255,255,.03);       /* sutil glass neutral */
+
+  transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease, background .2s ease;
+  cursor:pointer;
+}
+
+/* Hover/Focus */
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 24px rgba(0,0,0,.25);
+}
+.btn:focus-visible{
+  outline:2px solid var(--acc-2, #22d3ee);
+  outline-offset:2px;
+}
+
+/* Primary (tu estilo cyan) */
+.btn.primary{
+  background:linear-gradient(180deg, rgba(34,211,238,.18), rgba(34,211,238,.08));
+  border-color:rgba(34,211,238,.35);
+  color:#eaffff;
+}
+.btn.primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 12px 26px rgba(34,211,238,.18), inset 0 0 24px rgba(34,211,238,.12);
+}
+
+/* Ghost (texto + borde, sin relleno) */
+.btn.ghost{
+  background:transparent;
+  border-color:rgba(255,255,255,.14);
+  color:var(--txt, #e7eefc);
+}
+.btn.ghost:hover{
+  background:rgba(255,255,255,.06);
+}
+
+/* Disabled */
+.btn.disabled,
+.btn[aria-disabled="true"],
+button.btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+  filter:grayscale(.1);
+  box-shadow:none;
+  transform:none;
+}
+
+/* Tamaños opcionales */
+.btn.sm{ padding:.55rem .85rem; border-radius:12px; font-weight:600; }
+.btn.lg{ padding:.9rem 1.25rem; border-radius:16px; }
+
+/* Evita estirado dentro de cards/listas */
+.card .btn{ flex:0 0 auto; }

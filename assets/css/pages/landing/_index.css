@@ -1,0 +1,232 @@
+/* ===== Landing — variables (emerald/teal) ===== */
+.page-landing{
+  --ink:#e7eefc; --muted:#a1aab7;
+  --bg-deep:#0a0e1a; --surface-0:#0a0e1a; --surface-1:#10162A; --surface-2:#1e253e;
+  --edge:rgba(255,255,255,.15); --edge-strong:rgba(255,255,255,.25);
+  --glow:rgba(16,185,129,.25);
+  --acc:#10b981; --acc-2:#059669;
+  --grad-start:#6cffb3; --grad-end:#059669;
+  --ff:'Space Grotesk',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --r-1:12px; --r-2:16px;
+
+  --fg:var(--ink); --brand-1:var(--acc); --brand-2:var(--acc-2);
+
+  --nav-fg:var(--ink); --nav-fg-active:var(--acc);
+  --nav-bg-hover:color-mix(in srgb,var(--acc) 12%,transparent);
+  --nav-shadow-hover:0 0 12px color-mix(in srgb,var(--acc) 45%,transparent);
+
+  --btn-fg:var(--ink); --btn-bg:rgba(255,255,255,.05); --btn-border:var(--edge);
+  --btn-hover-bg:rgba(255,255,255,.08); --btn-hover-border:var(--edge-strong);
+  --btn-hover-transform:translateY(-1px); --btn-shadow:0 6px 18px rgba(0,0,0,.20);
+
+  --btn-primary-fg:#eaffff;
+  --btn-primary-bg:linear-gradient(180deg,color-mix(in srgb,var(--acc-2) 18%,transparent),color-mix(in srgb,var(--acc-2) 8%,transparent));
+  --btn-primary-bg-hover:linear-gradient(180deg,color-mix(in srgb,var(--acc-2) 24%,transparent),color-mix(in srgb,var(--acc-2) 12%,transparent));
+  --btn-primary-border:color-mix(in srgb,var(--acc-2) 35%,transparent);
+  --btn-primary-border-hover:color-mix(in srgb,var(--acc-2) 45%,transparent);
+  --btn-primary-shadow:0 8px 22px color-mix(in srgb,var(--acc-2) 22%,transparent);
+  --btn-primary-shadow-hover:0 14px 30px color-mix(in srgb,var(--acc-2) 26%,transparent);
+
+  --footer-fg:var(--muted); --footer-fg-strong:var(--ink);
+  --footer-bg:color-mix(in srgb,var(--surface-1) 70%,var(--surface-0));
+  --footer-border:var(--edge);
+
+  --scroll-c1:var(--acc); --scroll-c2:var(--acc-2); --scroll-c3:#9ce8c9;
+
+  background:
+    radial-gradient(1200px 700px at 80% -10%, color-mix(in srgb,var(--acc) 12%,transparent), transparent 60%),
+    var(--bg-deep);
+  color:var(--ink);
+  font-family:var(--ff);
+  line-height:1.6;
+}
+
+/* ===== Título ===== */
+.h-title{ font-size:clamp(3rem,6vw,5rem); }
+.h-title .highlight{
+  background:linear-gradient(90deg,var(--grad-start),var(--grad-end));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+
+/* ===== Legibilidad de texto en secciones ===== */
+.section p,.section li{ font-size:1.15rem; max-width:75ch; margin-inline:auto; }
+
+/* ===== Contenedores (cards/banner) ===== */
+.card,.ai-banner{ background-color:var(--surface-1); border:1px solid var(--edge); }
+
+/* ===== About: texto izquierda + foto derecha (misma altura) ===== */
+.about-wrap{ display:flex; flex-direction:column; gap:1.5rem; }
+
+.about-content{
+  display:grid;
+  grid-template-columns: minmax(0,2fr) minmax(300px,1fr); /* más ancha como pediste */
+  gap: clamp(20px,4vw,40px);
+  align-items:stretch;            /* iguala alturas */
+}
+
+.about-text{ display:flex; flex-direction:column; gap:1rem; }
+
+.about-photo{
+  margin:0;
+  display:grid;
+  grid-template-rows: 1fr auto;   /* imagen arriba, caption abajo */
+  border-radius:16px; overflow:hidden;
+  border:1px solid var(--edge-strong);
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+.about-photo img{
+  width:100%; height:100%;
+  object-fit:cover; object-position:50% 26%; /* foco en rostro */
+  display:block;
+}
+.about-caption{
+  margin:0; padding:.55rem .9rem;
+  text-align:center; font-size:.95rem; color:var(--muted);
+  background:rgba(0,0,0,.22);
+  border-top:1px solid var(--edge);
+}
+
+/* ===== Responsive ===== */
+@media (max-width:960px){
+  .about-content{ grid-template-columns:1fr; }
+  .about-photo{ max-width:620px; margin-inline:auto; }
+  .about-photo img{ height:auto; aspect-ratio:4/5; object-position:50% 32%; }
+}
+
+/* ===== Utilidad a11y ===== */
+.visually-hidden{
+  position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* === About: foto derecha debe estirarse en altura === */
+.about-content{
+  display:grid;
+  grid-template-columns: minmax(0,2fr) minmax(280px,1fr); /* derecha más estrecha */
+  gap: clamp(20px, 4vw, 40px);
+  align-items:stretch; /* ← hace que las dos columnas midan lo mismo */
+}
+
+.about-photo{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--edge-strong);
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+
+.about-photo img{
+  flex:1 1 auto;    /* ocupa todo el espacio vertical */
+  width:100%;
+  height:100%;      /* se estira en altura */
+  object-fit:cover;
+  object-position:50% 26%; /* foco en rostro */
+  display:block;
+}
+
+.about-caption{
+  margin:0;
+  padding:.55rem .9rem;
+  text-align:center;
+  font-size:.95rem;
+  color:var(--muted);
+  background:rgba(0,0,0,.22);
+  border-top:1px solid var(--edge);
+}
+
+/* Responsive */
+@media (max-width:960px){
+  .about-content{ grid-template-columns:1fr; }
+  .about-photo{ max-width:620px; margin-inline:auto; }
+  .about-photo img{ height:auto; aspect-ratio:4/5; object-position:50% 32%; }
+}
+
+/* Enfatizar número clave (ej. 30) */
+.h-tag {
+  line-height: 1.7;     /* da más aire vertical */
+  letter-spacing: 0.02em;
+}
+
+.h-tag .emphasize {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: var(--acc);
+  margin-left: 0.15em;   /* añade separación horizontal extra */
+  text-shadow: 0 0 12px rgba(16,185,129,.45);
+}
+
+.timeline .stream :is(time,.year,.eyebrow,.kicker,.meta-year){
+  color: var(--ink) !important;   /* o var(--acc) si quieres acento */
+  opacity: 1 !important;
+  font-weight: 700;
+}
+
+/* Casos típicos en headers de tarjeta */
+/* === Timeline: año encabezado de bloque (más dominante) === */
+.timeline .stream h3,
+.timeline .stream .milestone-year {
+  font-size: 1.6rem;              /* más grande que el normal */
+  font-weight: 800;               /* muy marcado */
+  color: var(--ink);              /* alto contraste */
+  margin-bottom: 0.3em;
+  letter-spacing: -0.01em;
+}
+
+/* Si quieres acentuarlo un poco con tu verde de marca */
+/* ===== Timeline: encabezado de bloque profesional ===== */
+/* Estructura recomendada en el HTML:
+   <h3 class="milestone-head">
+     <time class="year">2022–2024</time>
+     <span class="label">Milestones</span>
+   </h3>
+*/
+
+.timeline .stream .milestone-head,
+.timeline .stream h3 {
+  display:flex;
+  align-items:baseline;
+  gap:.6ch;
+  flex-wrap:wrap;
+  background:none;
+  -webkit-background-clip:initial;
+  -webkit-text-fill-color:initial;
+  text-shadow:none;
+  color:var(--ink);
+  font-weight:700;
+  font-size:clamp(1.2rem, 1.8vw, 1.4rem); /* base neutra del h3 */
+  margin:0 0 .4rem 0;
+}
+
+/* ===== Timeline: encabezado de bloque profesional ===== */
+
+
+/* Año principal en la cabecera del bloque */
+.timeline .stream h3 > time {
+  color:#cfd6e6;       /* gris claro, destacado */
+  font-weight:800;
+  font-size:clamp(1.6rem, 2.5vw, 2rem);
+}
+
+/* Milestones al lado del año principal */
+.timeline .stream :is(.milestone-head,h3) .label {
+  color:#8a94a8;       /* gris medio */
+  font-weight:600;
+  font-size:clamp(1rem, 1.6vw, 1.2rem);
+}
+
+/* Años dentro de cada card (menos dominantes) */
+.timeline .list .item time,
+.timeline .list .item .year {
+  color:#8a94a8;       /* mismo gris que Milestones */
+  font-weight:600;
+  font-size:1rem;
+}
+
+
+
+
+
+
+

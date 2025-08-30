@@ -1,0 +1,35 @@
+/* ===================== Footer ===================== */
+footer {
+  padding: var(--g-6) 0 var(--g-7);
+  text-align: center;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: var(--brand-2);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  transition: width .25s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}

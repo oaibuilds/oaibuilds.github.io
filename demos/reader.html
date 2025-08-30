@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" class="no-js" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Try O-Project · O-Reader Demo</title>
+  <meta name="description" content="Frontend-only demo of O-Reader, an AI-powered document classifier." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/base/_base.css">
+  <link rel="stylesheet" href="/assets/css/base/_utilities.css">
+  <link rel="stylesheet" href="/assets/css/components/_buttons.css">
+  <link rel="stylesheet" href="/assets/css/components/_cards.css">
+  <link rel="stylesheet" href="/assets/css/layout/_header.css">
+  <link rel="stylesheet" href="/assets/css/layout/_footer.css">
+  <link rel="stylesheet" href="/assets/css/compat/_legacy-shim.css">
+  <link rel="stylesheet" href="/assets/css/try/_index.css">
+
+  <!-- Fix lado a lado + contorno de prueba -->
+  <style>
+    .page-try .demo-grid{
+      display:grid!important;
+      grid-template-columns:1.1fr .9fr!important;
+      gap:20px; align-items:start;
+    }
+    .page-try .demo-grid>*{ min-width:0; }
+    .page-try .card{ border:1px solid rgba(255,255,255,.2); }
+
+
+    /* Pre/code con scroll y line-height cómodo */
+    .page-try pre.code{
+      background:#0b1222; border:1px solid rgba(255,255,255,.12);
+      border-radius:12px; padding:12px 14px;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:.92rem; line-height:1.55; overflow:auto; white-space:pre;
+    }
+
+    /* Respiración tipográfica */
+    .page-try .card{ line-height:1.6; }
+    .page-try .card p{ margin:.55rem 0; }
+    .page-try ul{ margin:.6rem 0 1rem; padding-left:1.1rem; }
+    .page-try li{ margin:.35rem 0; }
+    .page-try .sep{ border-top:1px solid rgba(255,255,255,.1); margin:1.2rem 0; }
+
+    /* === ATTACHMENT ZONE — versión visible (como screenshot) === */
+    .page-try .card .drop{
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem;
+      width:100%; text-align:center;
+      min-height:260px;
+
+      /* borde dashed bien visible + esquinas grandes */
+      border:2px dashed #7dd3fc !important;         /* cyan claro, visible */
+      border-radius:20px !important;
+
+      /* glow sutil de fondo */
+      background:
+        radial-gradient(120% 140% at 50% -20%, rgba(125,211,252,.18), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.06)) !important;
+
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      padding:20px;
+      transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .12s ease;
+    }
+    .page-try .card .drop:hover{
+      border-color:#22d3ee !important;              /* más cian en hover */
+      background:
+        radial-gradient(120% 140% at 50% -20%, rgba(34,211,238,.26), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.08)) !important;
+      box-shadow: 0 6px 22px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+    .page-try .card .drop.is-dragover,
+    .page-try .card .drop.drag,
+    .page-try .card .drop:focus-visible{
+      outline:none;
+      border-color:#22d3ee !important;
+      background:
+        radial-gradient(120% 140% at 50% -20%, rgba(34,211,238,.32), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.10)) !important;
+      box-shadow: 0 8px 26px rgba(34,211,238,.20);
+    }
+
+    /* detalles */
+    .page-try .card .dzicon{ font-size:34px; line-height:1; opacity:.95; }
+    .page-try .card .drop p{ margin:0; }
+    .page-try .card .link-underline{ text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+
+    /* CTA: botones principales */
+    .page-try .cta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;     /* centrados en el ancho */
+      gap: 1rem;                   /* más espacio entre botones */
+      margin-top: 1.1rem;          /* separar del drop zone */
+      margin-bottom: 1rem;         /* aire antes del contador */
+    }
+
+    /* Que cada botón tenga un tamaño mínimo cómodo */
+    .page-try .cta .btn {
+      min-width: 180px;
+      text-align: center;
+    }
+
+    /* Sección de estado (count + demo ready) */
+    .page-try .status-block {
+      margin-top: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: .95rem;
+      color: var(--muted, #a9b4c9);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* Toggle List/Folders más separado */
+    .page-try .view-toggle {
+      display: flex;
+      justify-content: center;
+      gap: .8rem;
+      margin-top: .8rem;
+    }
+
+
+  </style>
+</head>
+
+<body class="page-try">
+  <a href="#main" class="skip">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container section try-hero">
+    <div class="demo-grid">
+      <!-- IZQUIERDA -->
+      <article class="card attach-big">
+        <h2 class="panel-title">Try O-Project</h2>
+        <p class="subtle">Frontend-only preview of <strong>O-Reader</strong>.
+          No files are uploaded; everything runs in your browser.</p>
+
+        <div id="dropZone" class="drop" tabindex="0" aria-label="Dropzone for PDFs">
+          <div class="dzicon" aria-hidden="true">📄</div>
+          <p><strong>Drop PDFs here</strong> or
+            <label for="fileInput" class="link-underline">choose files</label>
+          </p>
+          <p class="subtle mini">Accepted: .pdf — up to 10 files</p>
+          <input type="file" id="fileInput" multiple accept="application/pdf" hidden />
+        </div>
+
+
+        <div class="cta">
+          <button id="btnClassify" class="btn primary">Run demo classification</button>
+          <button id="btnSamples" class="btn">Load sample set</button>
+          <button id="btnExport" class="btn">Export CSV</button>
+          <button id="btnClear" class="btn">Clear</button>
+        </div>
+
+        <div class="mini subtle"><span id="countPill">0 files</span></div>
+        <div id="stats"></div>
+
+        <div class="view-toggle">
+          <button id="btnList" class="btn mini" aria-pressed="true">List</button>
+          <button id="btnFolders" class="btn mini" aria-pressed="false">Folders</button>
+        </div>
+
+        <div class="sep"></div>
+
+        <h3 class="mini">Results</h3>
+        <div id="log" class="log">
+          <p class="subtle mini">No files yet. Add some PDFs to see predicted labels and the renamed output.</p>
+        </div>
+      </article>
+
+      <!-- DERECHA -->
+      <article class="card">
+        <h2 class="panel-title">What happens in the real agent?</h2>
+        <ul>
+          <li>Extracts text with <strong>PyMuPDF</strong> (fast PDF parsing).</li>
+          <li>Classifies with <strong>GPT</strong> (<code>invoice</code>, <code>contract</code>, <code>cv</code>, <code>unknown</code>).</li>
+          <li>Renames as <code>{type}__ai__{original}.pdf</code> and routes to a folder.</li>
+          <li>Writes a <code>summary.csv</code> of all actions.</li>
+        </ul>
+
+        <pre id="setupBlock" class="code"><code>
+git clone https://github.com/oaibuilds/O-Reader
+cd O-Reader
+python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+echo OPENAI_API_KEY=sk-xxx > .env
+python main.py
+</code></pre>
+        <button id="copySetup" class="btn mini copybtn">Copy</button>
+
+        <div class="folderbox">
+          <code>output/classified/&lt;type&gt;/</code>
+          <span class="mini subtle">destination route</span>
+        </div>
+
+        <p class="mini subtle">
+          Privacy: this demo does <strong>not</strong> upload files. Everything runs in your browser to show the UX idea.
+        </p>
+        <a class="btn" href="https://github.com/oaibuilds/O-Reader" target="_blank" rel="noopener">View repo →</a>
+      </article>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/partials.js" defer></script>
+  <script type="module" src="/assets/js/main.js?v=1"></script>
+  <script type="module" src="/assets/js/try.js?v=1"></script>
+  <script type="module" src="/assets/js/try/reader.js?v=2"></script>
+</body>
+</html>

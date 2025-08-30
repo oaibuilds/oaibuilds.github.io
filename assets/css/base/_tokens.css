@@ -1,0 +1,28 @@
+/* ===================== Design tokens (emerald/teal) ===================== */
+:root {
+  /* Base surfaces */
+  --bg:       #0a0e1a;   /* Fondo principal */
+  --bg-deep:  #05070f;   /* Más profundo, degradados */
+  --txt:      #f5f9ff;   /* Texto principal (casi blanco) */
+  --muted:    #a1aab7;   /* Gris neutro medio */
+  --card:     #111827;   /* Cards/panels */
+  --card-bg:  #111827;
+  --border:   #1f2937;
+  --glass:    rgba(10,14,26,.66);
+
+  /* Brand – acentos verdosos premium */
+  --brand-1:  #10b981;   /* emerald (verde limpio, vibrante) */
+  --brand-2:  #059669;   /* teal profundo, elegante */
+
+  /* Semantics */
+  --ok:   #22c55e;       /* verde éxito */
+  --warn: #f59e0b;       /* naranja warning */
+}
+
+/* Fondo global coherente */
+body {
+  background:
+    radial-gradient(1200px 700px at 80% -10%, rgba(16,185,129,.12), transparent 60%),
+    var(--bg-deep);
+  color: var(--txt);
+}

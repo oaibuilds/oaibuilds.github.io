@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>oaibuilds — O-Systems</title>
-  <meta name="description" content="O-Systems by oaibuilds. Intelligent systems, agentic architectures, and tools." />
+  <title>oaibuilds — O-Project</title>
+  <meta name="description" content="O-Project by oaibuilds. Intelligent systems, agentic architectures, and tools." />
   <link rel="canonical" href="https://oaibuilds.com/" />
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 
-  <!-- Social -->
-  <meta property="og:title" content="oaibuilds — O-Systems" />
+  <meta property="og:title" content="oaibuilds — O-Project" />
   <meta property="og:description" content="Intelligent systems & agentic architectures for an AI-driven world." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://oaibuilds.com/" />
@@ -19,50 +18,86 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/favicon.ico">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <link rel="stylesheet" href="/assets/css/style.css"> 
+  <link rel="stylesheet" href="/assets/css/base/_base.css">
+  <link rel="stylesheet" href="/assets/css/base/_utilities.css">
+  <link rel="stylesheet" href="/assets/css/components/_buttons.css">
+  <link rel="stylesheet" href="/assets/css/components/_cards.css">
+  <link rel="stylesheet" href="/assets/css/layout/_header.css">
+  <link rel="stylesheet" href="/assets/css/layout/_footer.css">
+  <link rel="stylesheet" href="/assets/css/pages/landing/_index.css">
+
+  <!-- Banner de foto dentro de About -->
+  <style>
+  /* Card About (sin cambio) */
+  .about-block{ display:flex; flex-direction:column; gap:1.5rem; }
+
+  /* Asegura que texto y foto tengan la misma altura en la fila */
+  .about-content{ display:flex; align-items:stretch; gap:clamp(20px,4vw,40px); }
+  .about-text{ flex:1 1 0%; min-width:0; display:flex; flex-direction:column; gap:1rem; }
+
+  /* === FOTO: estirar en VERTICAL, no en horizontal === */
+  .about-banner{
+    margin:0;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 12px 28px rgba(0,0,0,.35);
+    border:1px solid var(--edge-strong, rgba(255,255,255,.25));
+    display:flex;                 /* columna: img arriba + caption abajo */
+    flex-direction:column;
+    height:100%;                  /* ← toma la altura del bloque About */
+    flex:0 0 clamp(240px, 24vw, 320px); /* ancho de la columna derecha */
+  }
+  .about-banner img{
+    width:100%;
+    height:100%;                  /* ← se estira hacia abajo */
+    object-fit:cover;
+    object-position:50% 26%;      /* foco en el rostro */
+    display:block;
+  }
+  .about-banner figcaption{
+    margin:0; padding:.55rem .9rem; text-align:center;
+    font-size:.95rem; color:var(--muted);
+    background:rgba(0,0,0,.22); border-top:1px solid var(--edge);
+  }
+
+  /* Responsive: apila y usa altura natural (recorte 4:5) */
+  @media (max-width: 960px){
+    .about-content{ flex-direction:column; }
+    .about-banner{ height:auto; max-width:620px; margin-inline:auto; flex:none; }
+    .about-banner img{ height:auto; aspect-ratio:4/5; object-position:50% 32%; }
+  }
+
+  .visually-hidden{
+    position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+  }
+</style>
 
 </head>
-<body>
+<body class="page-landing">
+
   <a href="#main" class="skip">Skip to content</a>
 
-  <!-- Header -->
-  <header class="site">
-    <div class="container nav">
-      <div class="brand" aria-label="oaibuilds home">
-        <span class="dot" aria-hidden="true"></span>
-        <span>oaibuilds · O-Systems</span>
-      </div>
-
-      <!-- Mobile toggle -->
-      <input type="checkbox" id="menu-toggle" aria-label="Open menu" />
-      <label for="menu-toggle" class="menu-btn" aria-controls="primary-nav" aria-expanded="false">Menu</label>
-
-      <nav id="primary-nav" class="primary" aria-label="Primary">
-        <div class="container">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="https://github.com/oaibuilds" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
+  <div id="site-header"></div>
   <main id="main">
-    <!-- Hero -->
     <section class="container hero" id="home">
       <div>
-        <h1 class="h-title">O-Systems by <span class="brandmark">oaibuilds</span></h1>
-        <p class="h-sub">Intelligent systems & agentic architectures for an <strong>AI-driven world</strong><span class="nowrap"><strong>— Oriol Martinez</strong></span></p>
-        <p class="h-tag">From Zero to Scalable Intelligence<br>— Starting at 30</p>
+        <h1 class="h-title">O-Project by <span class="brandmark highlight">oaibuilds</span></h1>
+        <p class="h-sub">Intelligent systems & agentic architectures for an <strong>AI-driven world</strong><span class="nowrap"><strong> — Oriol Martinez</strong></span></p>
+        <p class="h-tag">From Zero to Scalable Intelligence<br>— Starting at&nbsp;<span class="emphasize">30</span></p>
+
+
         <div class="cta">
+          <a class="btn primary" href="/try.html" aria-label="Try O-Project demo">🚀 Try O-Project</a>
           <a class="btn primary" href="#projects">Explore Projects</a>
           <a class="btn" href="mailto:oriol@oaibuilds.com">Contact</a>
         </div>
+        <p class="subnote">A living lab of vertical AI agents designed to read, decide, and act.</p>
       </div>
       <div class="orbwrap" aria-hidden="true">
         <canvas id="oOrb"></canvas>
@@ -70,10 +105,9 @@
       </div>
     </section>
 
-    <!-- Banner -->
     <section class="container">
       <div class="ai-banner">
-        <p>Minimalism meets intelligence — Building systems that think, adapt, and scale.</p>
+        <p>Minimalism meets intelligence — Building systems that think, adapt and scale.</p>
         <div class="badges" aria-label="stack badges">
           <span class="badge">Python</span>
           <span class="badge">AI Agents</span>
@@ -81,21 +115,35 @@
           <span class="badge">Backtesting</span>
           <span class="badge">Orchestration</span>
         </div>
+        <div class="highlight" role="note">
+          <strong>New:</strong> O-Scanner reborn as <strong>O-Reader</strong> — smarter reading, cleaner routing, clearer output.
+        </div>
       </div>
       <div class="divider" role="presentation"></div>
     </section>
 
-    <!-- About + Vertical Timeline -->
     <section id="about" class="container section">
-      <article class="card reveal">
+      <article class="card reveal about-wrap">
         <header><h2>About</h2></header>
-        <p><strong>I'm Oriol Martinez.</strong> At 30, I started from zero to build a solid foundation in AI and intelligent automation.</p>
-        <p>Between <strong>2022–2024</strong>, I completed a degree in Multiplatform Application Development with <strong>Honours</strong> (top GPA), plus an internship at <strong>Inetum</strong> (backend, APIs, microservices). That gave me core software engineering discipline.</p>
-        <p>Today, I’m an <strong>AI Engineering student</strong> at the <strong>Polytechnic University of Catalonia (UPC)</strong> focused on vertical AI agents and Python-based automation systems.</p>
-        <blockquote class="quote">"Real learning starts when ideas are built — Build → Test → Improve → Repeat — Each loop shapes smarter, more scalable systems."</blockquote>
-        <p>I’m also learning Mandarin to broaden my global perspective and connect with diverse innovation ecosystems.</p><br>
 
-        <!-- ===== Vertical Timeline (data-driven) ===== -->
+        <div class="about-content">
+          <div class="about-text">
+            <p><strong>I'm Oriol Martinez.</strong> At 30, I started from zero to build a solid foundation in AI and intelligent automation.</p>
+            <p>Between <strong>2022–2024</strong>, I completed an <strong>Associate degree in Software Engineering</strong> (focus on application development) with <strong>Honours</strong> (top GPA), plus an internship at <strong>Inetum</strong> (backend, APIs, microservices). That gave me core software engineering discipline.</p>
+            <p>Today, I’m an <strong>AI Engineering student</strong> at the <strong>Polytechnic University of Catalonia (UPC)</strong> focused on vertical AI agents and Python-based automation systems.</p>
+            <blockquote class="quote">"Real learning starts when ideas are built — Build → Test → Improve → Repeat — Each loop shapes smarter, more scalable systems."</blockquote>
+            <p>I’m also learning Mandarin to broaden my global perspective and connect with diverse innovation ecosystems.</p>
+          </div>
+
+          <figure class="about-banner">
+            <img src="/assets/img/oriol-hust.jpg"
+                alt="Oriol Martinez at Huazhong University of Science and Technology"
+                loading="lazy">
+            <figcaption class="about-caption">Huazhong University of Science and Technology — Wuhan, China (2025)</figcaption>
+          </figure>
+        </div>
+
+        <!-- Timeline debajo (no tocar tu markup interno) -->
         <div class="timeline" id="timeline" aria-label="Career timeline">
           <aside class="rail" aria-hidden="false">
             <div class="yearbox" aria-live="polite" aria-atomic="true">
@@ -119,9 +167,9 @@
           </div>
         </div>
       </article>
+
     </section>
 
-    <!-- Projects intro -->
     <section id="projects" class="container section">
       <article class="card reveal">
         <header><h2>Projects</h2></header>
@@ -133,9 +181,9 @@
 
       <div class="grid cols-2" style="margin-top:var(--g-3)">
         <article class="card reveal">
-          <h2>O-Scanner</h2>
-          <p>Modular GPT-powered agent for intelligent document classification and organization.</p>
-          <a class="btn" href="https://github.com/oaibuilds/O-Scanner" target="_blank" rel="noopener">View on GitHub →</a>
+          <h2>O-Reader</h2>
+          <p>GPT-powered document reader — classify & auto-organize PDFs with a structured summary.</p>
+          <a class="btn" href="https://github.com/oaibuilds/O-Reader" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
         <article class="card reveal">
           <h2>O-Trader</h2>
@@ -145,7 +193,6 @@
       </div>
     </section>
 
-    <!-- Roadmap -->
     <section id="roadmap" class="container section">
       <article class="card reveal">
         <header><h2>Roadmap 2025–2026</h2></header>
@@ -154,7 +201,7 @@
             <h4>Now</h4>
             <ul>
               <li><strong>O-Trader</strong> — Market automation & signal agents</li>
-              <li><strong>O-Scanner</strong> — PDF triage & routing</li>
+              <li><strong>O-Reader</strong> — PDF triage & routing</li>
             </ul>
           </div>
           <div class="stage">
@@ -175,23 +222,10 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="links">
-        <a class="link" href="mailto:oriol@oaibuilds.com">oriol@oaibuilds.com</a>
-        <span aria-hidden="true">·</span>
-        <a class="link" href="https://www.linkedin.com/in/oriolmartz" target="_blank" rel="noopener">LinkedIn</a>
-        <span aria-hidden="true">·</span>
-        <a class="link" href="https://github.com/oaibuilds" target="_blank" rel="noopener">GitHub</a>
-      </div>
-      <div style="margin-top:.5rem">© 2025 oaibuilds.com</div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
-<script type="module" src="assets/js/main.js"></script>
-  
-
-
+  <script type="module" src="/assets/js/main.js"></script>
+  <script src="/assets/js/partials.js" defer></script>
 
 </body>
 </html>

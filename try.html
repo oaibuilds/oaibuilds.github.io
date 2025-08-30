@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Try · O-Project</title>
+  <meta name="description" content="Choose an O-Project agent to try: Reader, Trader, Stream, Core." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- Base -->
+  <link rel="stylesheet" href="/assets/css/base/_base.css">
+  <link rel="stylesheet" href="/assets/css/base/_utilities.css">
+
+  <!-- Componentes globales -->
+  <link rel="stylesheet" href="/assets/css/components/_buttons.css">
+  <link rel="stylesheet" href="/assets/css/components/_cards.css">
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="/assets/css/layout/_header.css">
+  <link rel="stylesheet" href="/assets/css/layout/_footer.css">
+
+  <!-- Compat shim (parche anti-legacy) -->
+  <link rel="stylesheet" href="/assets/css/compat/_legacy-shim.css">
+
+  <!-- Página -->
+  <link rel="stylesheet" href="/assets/css/pages/landing/_index.css">
+
+
+</head>
+<body class="page-try">
+
+  <a href="#main" class="skip">Skip to content</a>
+
+  <!-- Header inyectado -->
+  <div id="site-header"></div>
+
+  <!-- Main -->
+  <main id="main" class="try-wrap">
+    <div class="container">
+      <h1 class="h-title">Try <span class="brandmark">O-Project</span></h1>
+      <p class="h-sub">Choose an agent to try. This hub is the foundation for the future unified UI.</p>
+
+      <section class="grid" aria-label="Agent demos">
+        <!-- O-Reader -->
+        <article class="card">
+          <header class="card-head">
+            <div class="tags">
+              <span class="badge">Docs</span>
+              <span class="status ready">Ready</span>
+            </div>
+            <h2>O-Reader</h2>
+          </header>
+          <p class="muted">
+            Classify and organize PDFs with fast parsing (PyMuPDF) and semantic tags.
+            Renames to <code>{type}__ai__{original}.pdf</code> and generates <code>summary.csv</code>.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="/demos/reader.html">Open demo</a>
+            <a class="btn" href="https://github.com/oaibuilds/O-Reader" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+        <!-- O-Trader -->
+        <article class="card">
+          <header class="card-head">
+            <div class="tags">
+              <span class="badge">Markets</span>
+              <span class="status building">Building</span>
+            </div>
+            <h2>O-Trader</h2>
+          </header>
+          <p class="muted">
+            Signals, backtesting, and disciplined execution with risk management.
+            Sandbox view with simulated data.
+          </p>
+          <div class="cta">
+            <button class="btn disabled" aria-disabled="true">Open demo</button>
+            <a class="btn" href="https://github.com/oaibuilds/O-Trader" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+        <!-- O-Stream -->
+        <article class="card">
+          <header class="card-head">
+            <div class="tags">
+              <span class="badge">Pipelines</span>
+              <span class="status soon">Coming soon</span>
+            </div>
+            <h2>O-Stream</h2>
+          </header>
+          <p class="muted">
+            Ingestion, enrichment, and publishing of content with agents.
+            Reusable templates and verifiable prompts.
+          </p>
+          <div class="cta">
+            <button class="btn disabled" aria-disabled="true">Open demo</button>
+            <button class="btn disabled" aria-disabled="true">GitHub</button>
+          </div>
+        </article>
+
+        <!-- O-Core -->
+        <article class="card">
+          <header class="card-head">
+            <div class="tags">
+              <span class="badge">Orchestration</span>
+              <span class="status soon">Coming soon</span>
+            </div>
+            <h2>O-Core</h2>
+          </header>
+          <p class="muted">
+            Common layer for memory, task queues, and decision policies.
+            Connects agents and defines operating rules.
+          </p>
+          <div class="cta">
+            <button class="btn disabled" aria-disabled="true">Open demo</button>
+            <button class="btn disabled" aria-disabled="true">GitHub</button>
+          </div>
+        </article>
+      </section>
+
+      <p class="note">Privacy: demos don’t upload files; everything runs in the browser to showcase the UX.</p>
+    </div>
+  </main>
+
+  <!-- Footer inyectado -->
+  <div id="site-footer"></div>
+
+  <!-- Partials + scripts de página -->
+  <script src="/assets/js/partials.js" defer></script>
+  <script src="/assets/js/try/try.js" defer></script>
+</body>
+</html>
