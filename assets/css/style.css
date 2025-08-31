@@ -447,15 +447,18 @@ canvas#oOrb {
 }
 
 .rail .yearbox {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.25)), var(--card);
+  border: 1px solid rgba(255,255,255,.08);
   border-radius: var(--r-2);
   padding: 1rem;
   display: grid;
   gap: .35rem;
   align-content: start;
-  box-shadow: var(--shadow-1);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.35),  /* sombra inferior fuerte */
+    inset 0 1px 2px rgba(255,255,255,.06); /* borde interior brillante */
 }
+
 
 .rail .yearbox .label {
   color: var(--muted);
@@ -795,3 +798,51 @@ footer {
     }
   }
 }
+
+
+.card.tcard[aria-expanded="false"]{
+  max-height:260px !important;
+  overflow:hidden !important;
+  height:auto !important;
+}
+.card.tcard[aria-expanded="false"] .detail{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
+  position:relative;
+}
+.card.tcard[aria-expanded="false"] .detail::after{
+  content:'';
+  position:absolute;left:0;right:0;bottom:0;height:2em;
+  background:linear-gradient(to top, var(--card) 0%, transparent 100%);
+}
+
+/* Expandido */
+.card.tcard[aria-expanded="true"]{
+  max-height:9999px !important;
+  overflow:visible !important;
+}
+.card.tcard[aria-expanded="true"] .detail{
+  display:block;
+  -webkit-line-clamp:initial;
+}
+.card.tcard[aria-expanded="true"] .detail::after{ display:none; }
+
+.card.tcard .toggle {
+  position: absolute;
+  right: .8rem;
+  top: .8rem;
+  cursor: pointer;   /* 👈 esto pone la mano */
+}
+
+.card.tcard .toggle:hover {
+  transform: scale(1.1);
+  transition: transform .2s ease;
+}
+
+.tcard .detail strong {
+  font-weight: 700;
+  color: var(--brand-2); /* azul/verde según tu paleta */
+}
+

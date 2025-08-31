@@ -144,21 +144,21 @@
 }
 
 /* Enfatizar número clave (ej. 30) */
-.h-tag {
-  line-height: 1.7;     /* da más aire vertical */
-  letter-spacing: 0.02em;
+.h-tag .emphasize.zero {
+  color: var(--acc);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(34,197,94,.45);
 }
 
-.h-tag .emphasize {
-  font-size: 1.6em;
-  font-weight: 700;
+.h-tag .emphasize.thirty {
   color: var(--acc);
-  margin-left: 0.15em;   /* añade separación horizontal extra */
-  text-shadow: 0 0 12px rgba(16,185,129,.45);
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(99,102,241,.55);
 }
+
 
 .timeline .stream :is(time,.year,.eyebrow,.kicker,.meta-year){
-  color: var(--ink) !important;   /* o var(--acc) si quieres acento */
+  color: var(--muted);   
   opacity: 1 !important;
   font-weight: 700;
 }

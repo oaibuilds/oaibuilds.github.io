@@ -78,3 +78,4 @@ button.btn:disabled{
 
 /* Evita estirado dentro de cards/listas */
 .card .btn{ flex:0 0 auto; }
+
