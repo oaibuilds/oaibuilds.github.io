@@ -5,6 +5,8 @@ footer {
   color: var(--muted);
 }
 
+
+
 .links {
   display: flex;
   gap: .5rem;
