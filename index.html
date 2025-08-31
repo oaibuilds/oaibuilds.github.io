@@ -31,53 +31,6 @@
   <link rel="stylesheet" href="assets/css/layout/_footer.css">
   <link rel="stylesheet" href="assets/css/pages/landing/_index.css">
 
-  <!-- Banner de foto dentro de About -->
-  <style>
-  /* Card About (sin cambio) */
-  .about-block{ display:flex; flex-direction:column; gap:1.5rem; }
-
-  /* Asegura que texto y foto tengan la misma altura en la fila */
-  .about-content{ display:flex; align-items:stretch; gap:clamp(20px,4vw,40px); }
-  .about-text{ flex:1 1 0%; min-width:0; display:flex; flex-direction:column; gap:1rem; }
-
-  /* === FOTO: estirar en VERTICAL, no en horizontal === */
-  .about-banner{
-    margin:0;
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 12px 28px rgba(0,0,0,.35);
-    border:1px solid var(--edge-strong, rgba(255,255,255,.25));
-    display:flex;                 /* columna: img arriba + caption abajo */
-    flex-direction:column;
-    height:100%;                  /* ← toma la altura del bloque About */
-    flex:0 0 clamp(240px, 24vw, 320px); /* ancho de la columna derecha */
-  }
-  .about-banner img{
-    width:100%;
-    height:100%;                  /* ← se estira hacia abajo */
-    object-fit:cover;
-    object-position:50% 26%;      /* foco en el rostro */
-    display:block;
-  }
-  .about-banner figcaption{
-    margin:0; padding:.55rem .9rem; text-align:center;
-    font-size:.95rem; color:var(--muted);
-    background:rgba(0,0,0,.22); border-top:1px solid var(--edge);
-  }
-
-  /* Responsive: apila y usa altura natural (recorte 4:5) */
-  @media (max-width: 960px){
-    .about-content{ flex-direction:column; }
-    .about-banner{ height:auto; max-width:620px; margin-inline:auto; flex:none; }
-    .about-banner img{ height:auto; aspect-ratio:4/5; object-position:50% 32%; }
-  }
-
-  .visually-hidden{
-    position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
-    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
-  }
-</style>
-
 </head>
 <body class="page-landing">
 
@@ -97,7 +50,7 @@
           <a class="btn primary" href="#projects">Explore Projects</a>
           <a class="btn" href="mailto:oriol@oaibuilds.com">Contact</a>
         </div>
-        <p class="subnote">A living lab of vertical AI agents designed to read, decide, and act.</p>
+        <p class="subnote">A living lab of vertical AI agents designed to read, decide and operate.</p>
       </div>
       <div class="orbwrap" aria-hidden="true">
         <canvas id="oOrb"></canvas>
@@ -131,7 +84,7 @@
             <p><strong>I'm Oriol Martinez.</strong> At 30, I started from zero to build a solid foundation in AI and intelligent automation.</p>
             <p>Between <strong>2022–2024</strong>, I completed an <strong>Associate degree in Software Engineering</strong> (focus on application development) with <strong>Honours</strong> (top GPA), plus an internship at <strong>Inetum</strong> (backend, APIs, microservices). That gave me core software engineering discipline.</p>
             <p>Today, I’m an <strong>AI Engineering student</strong> at the <strong>Polytechnic University of Catalonia (UPC)</strong> focused on vertical AI agents and Python-based automation systems.</p>
-            <blockquote class="quote">"Real learning starts when ideas are built — Build → Test → Improve → Repeat — Each loop shapes smarter, more scalable systems."</blockquote>
+            <blockquote class="quote">"Real learning starts when ideas are built — Build → Test → Improve → Repeat."</blockquote>
             <p>I’m also learning Mandarin to broaden my global perspective and connect with diverse innovation ecosystems.</p>
           </div>
 
