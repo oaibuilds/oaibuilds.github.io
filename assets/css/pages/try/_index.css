@@ -4,6 +4,7 @@
 .h-title {
   font-size: clamp(3rem, 6vw, 5rem);
   text-align: center;
+  margin-bottom: 1.3rem; 
 }
 .h-title .brandmark {
   background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
@@ -15,7 +16,7 @@
   line-height: 1.65;
   color: var(--muted);
   max-width: 760px;
-  margin-top: 0.6rem;
+  margin-top: 0.65rem;
 }
 
 
