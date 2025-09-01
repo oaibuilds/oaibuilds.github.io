@@ -240,8 +240,11 @@ nav.primary a:hover {
   margin: .7rem 0 0;
   font-size: var(--fs-2);
   font-weight: 600;
-  color: var(--brand-2);
+  background: var(--grad-end);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 
 .cta {
   display: flex;
@@ -681,12 +684,7 @@ canvas#oOrb {
   padding-left: 1.1rem;
 }
 
-/* ===================== Footer ===================== */
-footer {
-  padding: var(--g-6) 0 var(--g-7);
-  text-align: center;
-  color: var(--muted);
-}
+
 
 .links {
   display: flex;
@@ -843,6 +841,6 @@ footer {
 
 .tcard .detail strong {
   font-weight: 700;
-  color: var(--brand-2); /* azul/verde según tu paleta */
+  color:var(--txt)
 }
 

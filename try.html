@@ -4,18 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Try · O-Project</title>
-  <meta name="description" content="Choose an O-Project agent to try: Reader, Trader, Stream, Core." />
+  <meta name="description" content="Try the O-Project agents: Reader, Trader, Stream, Core. Fully client-side demos.">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
-
-  <!-- Base -->
+  <!-- Base styles -->
   <link rel="stylesheet" href="/assets/css/base/_base.css">
   <link rel="stylesheet" href="/assets/css/base/_utilities.css">
 
-  <!-- Componentes globales -->
+  <!-- Global components -->
   <link rel="stylesheet" href="/assets/css/components/_buttons.css">
   <link rel="stylesheet" href="/assets/css/components/_cards.css">
 
@@ -23,28 +23,34 @@
   <link rel="stylesheet" href="/assets/css/layout/_header.css">
   <link rel="stylesheet" href="/assets/css/layout/_footer.css">
 
-  <!-- Compat shim (parche anti-legacy) -->
+  <!-- Compatibility shim for legacy browsers -->
   <link rel="stylesheet" href="/assets/css/compat/_legacy-shim.css">
 
-  <!-- Página -->
-  <link rel="stylesheet" href="/assets/css/pages/landing/_index.css">
-
-
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="/assets/css/pages/try/_index.css">            
 </head>
-<body class="page-try">
 
+<body class="page-try">
   <a href="#main" class="skip">Skip to content</a>
 
-  <!-- Header inyectado -->
+  <!-- Injected site header -->
   <div id="site-header"></div>
 
-  <!-- Main -->
+  <!-- Main content -->
   <main id="main" class="try-wrap">
     <div class="container">
-      <h1 class="h-title">Try <span class="brandmark">O-Project</span></h1>
-      <p class="h-sub">Choose an agent to try. This hub is the foundation for the future unified UI.</p>
+      <!-- Page header -->
+      <header class="page-header">
+        <h1 class="h-title">
+          <span class="brandmark">Try O-Project</span>
+        </h1>
+        <p class="h-sub">Choose an agent to try — this hub is your entry point to the ecosystem.</p>
+      </header>
 
-      <section class="grid" aria-label="Agent demos">
+
+      <!-- Agent cards grid -->
+      <section class="try-grid" aria-label="O-Project agent demos">
+
         <!-- O-Reader -->
         <article class="card">
           <header class="card-head">
@@ -55,8 +61,8 @@
             <h2>O-Reader</h2>
           </header>
           <p class="muted">
-            Classify and organize PDFs with fast parsing (PyMuPDF) and semantic tags.
-            Renames to <code>{type}__ai__{original}.pdf</code> and generates <code>summary.csv</code>.
+            Smart PDF classifier using <strong>PyMuPDF</strong> and semantic analysis.
+            Automatically renames and summarizes files locally.
           </p>
           <div class="cta">
             <a class="btn primary" href="/demos/reader.html">Open demo</a>
@@ -64,7 +70,6 @@
           </div>
         </article>
 
-        <!-- O-Trader -->
         <!-- O-Trader -->
         <article class="card">
           <header class="card-head">
@@ -75,15 +80,14 @@
             <h2>O-Trader</h2>
           </header>
           <p class="muted">
-            Signals, backtesting, and disciplined execution with risk management.
-            Sandbox view with simulated data.
+            Backtesting and disciplined execution with <strong>risk-managed agents</strong>.
+            Simulated data. Full client-side logic.
           </p>
           <div class="cta">
             <a class="btn primary" href="/demos/trader.html">Open demo</a>
             <a class="btn" href="https://github.com/oaibuilds/O-Trader" target="_blank" rel="noopener">GitHub</a>
           </div>
         </article>
-
 
         <!-- O-Stream -->
         <article class="card">
@@ -95,8 +99,8 @@
             <h2>O-Stream</h2>
           </header>
           <p class="muted">
-            Ingestion, enrichment, and publishing of content with agents.
-            Reusable templates and verifiable prompts.
+            Content ingestion & publishing pipelines with reusable agent templates.
+            Verifiable prompt chains. In development.
           </p>
           <div class="cta">
             <button class="btn disabled" aria-disabled="true">Open demo</button>
@@ -114,24 +118,65 @@
             <h2>O-Core</h2>
           </header>
           <p class="muted">
-            Common layer for memory, task queues, and decision policies.
-            Connects agents and defines operating rules.
+            Shared memory, task queues, and system logic for agent orchestration.
+            Connects modules and governs interactions.
           </p>
           <div class="cta">
             <button class="btn disabled" aria-disabled="true">Open demo</button>
             <button class="btn disabled" aria-disabled="true">GitHub</button>
           </div>
         </article>
+
+        <!-- O-Insight -->
+        <article class="card">
+          <header class="card-head">
+            <div class="tags">
+              <span class="badge">Analytics</span>
+              <span class="status future">Future</span>
+            </div>
+            <h2>O-Insight</h2>
+          </header>
+          <p class="muted">
+            Visual dashboards for AI agent performance. Track actions, interpret decisions, and fine-tune behaviors in real-time.
+          </p>
+          <div class="cta">
+            <button class="btn disabled" aria-disabled="true">Preview</button>
+            <button class="btn disabled" aria-disabled="true">GitHub</button>
+          </div>
+        </article>
+
+        <!-- O-Gateway -->
+        <article class="card">
+          <header class="card-head">
+            <div class="tags">
+              <span class="badge">Infrastructure</span>
+              <span class="status future">Future</span>
+            </div>
+            <h2>O-Gateway</h2>
+          </header>
+          <p class="muted">
+            Unified interface for connecting external APIs and services to your agents. Gateway to third-party integrations.
+          </p>
+          <div class="cta">
+            <button class="btn disabled" aria-disabled="true">Preview</button>
+            <button class="btn disabled" aria-disabled="true">GitHub</button>
+          </div>
+        </article>
+
       </section>
 
-      <p class="note">Privacy: demos don’t upload files; everything runs in the browser to showcase the UX.</p>
+
+      <!-- Privacy note -->
+      <footer class="note" role="note">
+        <strong>Privacy note:</strong> All demos run fully in-browser — no data leaves your device.
+      </footer>
     </div>
   </main>
 
-  <!-- Footer inyectado -->
+  <!-- Injected site footer -->
   <div id="site-footer"></div>
 
-  <!-- Partials + scripts de página -->
+  <!-- JavaScript -->
   <script src="/assets/js/partials.js" defer></script>
   <script src="/assets/js/try/try.js" defer></script>
 </body>

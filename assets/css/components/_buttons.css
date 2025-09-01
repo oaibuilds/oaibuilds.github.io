@@ -1,13 +1,5 @@
 /* ===================== Buttons (global) ===================== */
 
-/* Contenedor de CTAs */
-.cta{
-  display:flex;
-  flex-wrap:wrap;
-  gap: .75rem;                 /* antes usabas margin-left; mejor gap */
-  margin-top: var(--g-4, 1.5rem);
-}
-
 /* Botón base */
 .btn,
 a.btn,
@@ -77,5 +69,9 @@ button.btn:disabled{
 .btn.lg{ padding:.9rem 1.25rem; border-radius:16px; }
 
 /* Evita estirado dentro de cards/listas */
-.card .btn{ flex:0 0 auto; }
+.card .btn {
+  flex: 1 1 auto;     /* permite que el gap funcione como debe */
+  max-width: max-content;  /* evita que se estiren si no deben */
+}
+
 

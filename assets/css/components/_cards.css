@@ -54,10 +54,6 @@
 .status.building{ color:var(--warn); }
 .status.soon{ color:var(--muted); }
 
-/* CTA: botones sin estirarse */
-.card .cta{ display:flex; gap:var(--g-2); flex-wrap:wrap; }
-.card .btn{ flex:0 0 auto; }      /* ¡no ocupar todo el ancho! */
-
 .card {
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
               var(--card-bg);
@@ -66,6 +62,19 @@
   padding: 1.25rem;
   box-shadow: 0 10px 30px rgba(0,0,0,.3);
   color: var(--txt); /* asegúrate que no caiga en muted */
+}
+
+.card .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--g-2);        /* Aplica espacio entre botones */
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.card .btn {
+  flex: 1 1 auto;
+  max-width: max-content;  /* Evita que se estiren */
 }
 
 

@@ -1,11 +1,4 @@
 /* ===================== Footer ===================== */
-footer {
-  padding: var(--g-6) 0 var(--g-7);
-  text-align: center;
-  color: var(--muted);
-}
-
-
 
 .links {
   display: flex;

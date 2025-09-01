@@ -1,0 +1,133 @@
+/* ===================== Try Page Styles ===================== */
+/* This file styles the grid of agent cards on try.html */
+
+.h-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+.h-title .brandmark {
+  background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
+  -webkit-background-clip: text;
+}
+
+/* === Try page-specific variables === */
+.page-try {
+  --status-ready: var(--acc, #10b981);     /* Brand green (Emerald/Teal) */
+  --status-soon: #facc15;                  /* Warm yellow (Coming Soon) */
+  --status-text: #fff;                     /* Text color for status badges */
+  --card-bg: var(--surface-1, #10162A);    /* Card background */
+  --card-border: var(--edge, rgba(255,255,255,.15));
+  --card-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  --card-radius: 16px;
+  --gap: clamp(1.5rem, 4vw, 2.5rem);       /* Responsive spacing */
+}
+
+/* === Responsive card layout grid === */
+.try-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap);
+  margin-top: 2.5rem;
+}
+
+/* === Card base styles === */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 1rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* === Card header area (title + tags) === */
+.card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+.card-head h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink, #e7eefc);
+  margin: 0;
+}
+
+/* === Status badges container === */
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* === Individual badge styles (general) === */
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--edge, rgba(255,255,255,.15));
+  color: var(--muted, #a1aab7);
+}
+
+/* === Status labels (colored) === */
+.status {
+  padding: 0.3em 0.7em;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--status-text);
+}
+.status.ready {
+  background-color: var(--status-ready);  /* Green */
+}
+.status.soon {
+  background-color: var(--status-soon);   /* Yellow */
+  color: #222;                            /* Dark text for contrast */
+}
+
+.status.future {
+  background-color: #6366f1; /* Indigo */
+  color: #fff;
+}
+
+/* === Card paragraph text === */
+.card p.muted {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+/* === CTA buttons inside cards === */
+.card .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;     /* Center horizontally */
+  margin-top: 1rem;
+}
+
+/* === Demo notice below cards === */
+.note {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+
+
