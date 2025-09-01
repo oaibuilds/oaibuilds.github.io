@@ -2,13 +2,10 @@
 (() => {
   function start() {
     const $ = (sel) => document.querySelector(sel);
-
-    // Guard: solo si existe el root del demo
     const drop = $('#dropZone');
     const input = $('#fileInput');
     if (!drop && !input) return;
 
-    // Debug & estado inicial
     window.__OREADER_BOOT_OK = true;
     console.log('O-Reader JS boot ✓');
     const log = $('#log');
@@ -215,7 +212,6 @@
     renderList();
   }
 
-  // Boot incluso si te olvidas de "defer"
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start, { once:true });
   } else {

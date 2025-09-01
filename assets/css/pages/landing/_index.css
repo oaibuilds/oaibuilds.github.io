@@ -67,6 +67,15 @@
   -webkit-text-fill-color: transparent;
 }
 
+.page-landing .h-sub {
+  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 720px;
+  margin-top: 0.6rem;
+  animation: fadeUp .6s ease both;
+}
+
 .page-landing .h-tag .emphasize.thirty {
   color: var(--acc);
   font-weight: 800;
@@ -208,6 +217,19 @@
   font-weight: 600;
   font-size: 1rem;
 }
+
+.stream .list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.year-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+
 
 
 /* ===== A11y Utility ===== */

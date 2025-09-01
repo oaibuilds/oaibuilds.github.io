@@ -27,5 +27,4 @@ export async function fetchSeries({ symbol = 'BTCUSDT', bars = 500, seed = 42, s
   return { o, h, l, c, v, t, meta: { symbol, interval: '1h' } };
 }
 
-// (Opcional) export default por compatibilidad
 export default { fetchSeries };

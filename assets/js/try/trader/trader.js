@@ -5,9 +5,8 @@ import { fetchSeries }   from './data/data_fetcher.js';
 import { qtyFromRisk }   from './core/qty_logic.js';
 import { Wallet }        from './core/wallet.js';
 
-// Tu estrategia (ya la aliaste en ema_rsi.js)
 import { emaRsi as emaRsiStrategy } from './strategies/ema_rsi.js';
-// Si añades más, mapea aquí:
+
 const PRESETS = {
   'ema-rsi': emaRsiStrategy,
   // 'donchian': donchianStrategy,

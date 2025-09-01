@@ -64,13 +64,6 @@
     });
   });
 
-  // -------- Delegación: tracking opcional de clics en CTA
-  function track(eventName, data = {}) {
-    // Hook opcional para tu analítica (GA, Plausible, etc.)
-    // console.log('[track]', eventName, data);
-    // Ejemplo Plausible: window.plausible?.(eventName, { props: data });
-  }
-
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.btn');
     if (!btn) return;
