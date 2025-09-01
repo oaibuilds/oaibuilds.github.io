@@ -56,6 +56,7 @@
 }
 
 
+
 /* ===== Hero Section ===== */
 .page-landing .h-title {
   font-size: clamp(3rem, 6vw, 5rem);
@@ -96,7 +97,6 @@
   max-width: 75ch;
   margin-inline: auto;
 }
-
 
 /* ===== Shared card-like containers ===== */
 .card,

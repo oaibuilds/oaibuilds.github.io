@@ -10,10 +10,19 @@
   -webkit-background-clip: text;
 }
 
+.h-sub {
+  font-size: clamp(0.85rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 760px;
+  margin-top: 0.6rem;
+}
+
+
 /* === Try page-specific variables === */
 .page-try {
   --status-ready: var(--acc, #10b981);     /* Brand green (Emerald/Teal) */
-  --status-soon: #facc15;                  /* Warm yellow (Coming Soon) */
+  --status-soon: #facc15;    .              /* Warm yellow (Coming Soon) */
   --status-text: #fff;                     /* Text color for status badges */
   --card-bg: var(--surface-1, #10162A);    /* Card background */
   --card-border: var(--edge, rgba(255,255,255,.15));
