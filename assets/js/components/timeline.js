@@ -22,7 +22,7 @@ export class Timeline {
       cat: 'education',
       title: 'Associate Degree in Software Engineering + Internship at Inetum',
       detail:
-        'Completed an <strong>Associate Degree</strong> focused on cross-platform software development, software architecture and testing practices.<br><br>' +
+        'Completed an <strong>Associate Degree</strong> at <strong>Institut TIC Barcelona (ITIC)</strong> focused on cross-platform software development, software architecture and testing practices.<br><br>' +
         'During my <strong>11-month</strong> internship at <strong>Inetum</strong> (hybrid), I contributed to enterprise applications using ASP.NET Core, Spring Boot and PL/SQL. ' +
         'Gained practical experience in microservices, Agile workflows and collaborative development with cross-functional teams.',
       badges: ['.NET Core', 'Spring Boot', 'Angular', 'Microservices', 'API REST', 'PL/SQL', 'Agile', 'CRM'],
