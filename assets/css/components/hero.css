@@ -1,4 +1,6 @@
 /* ===================== Hero ===================== */
+
+/* ---------- Hero section ---------- */
 .hero {
   display: grid;
   grid-template-columns: 1fr;
@@ -13,6 +15,8 @@
   }
 }
 
+
+/* ---------- Hero text ---------- */
 .h-title {
   margin: 0;
   font-size: var(--fs-1);
@@ -22,9 +26,9 @@
 }
 
 .h-sub {
-  color: var(--muted);
   margin: .35rem 0 0;
   font-size: calc(var(--fs-3) * .98);
+  color: var(--muted);
 }
 
 .h-tag {
@@ -34,6 +38,8 @@
   color: var(--brand-2);
 }
 
+
+/* ---------- Call to action ---------- */
 .cta {
   display: flex;
   flex-wrap: wrap;
@@ -59,7 +65,8 @@
   color: #fff;
 }
 
-/* Márgenes laterales texto en móvil */
+
+/* ---------- Responsive text margins (mobile) ---------- */
 @media (max-width: 640px) {
   .hero .h-title,
   .hero .h-sub,
@@ -69,10 +76,12 @@
   }
 }
 
+
+/* ---------- Brandmark ---------- */
 .brandmark {
   background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
   -webkit-background-clip: text;
-  background-clip: text;
+          background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
 }
@@ -81,6 +90,8 @@
   white-space: nowrap;
 }
 
+
+/* ---------- Extra small devices ---------- */
 @media (max-width: 420px) {
   :root {
     --fs-1: clamp(1.8rem, 7vw, 2.1rem);
@@ -91,7 +102,10 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     gap: .5rem;
-    margin: 0 max(env(safe-area-inset-right), 16px) 0 max(env(safe-area-inset-left), 16px);
+    margin: 0
+      max(env(safe-area-inset-right), 16px)
+      0
+      max(env(safe-area-inset-left), 16px);
   }
 
   .cta .btn {
@@ -111,7 +125,8 @@
   }
 }
 
-/* Orb */
+
+/* ---------- Orb visuals ---------- */
 .orbwrap {
   position: relative;
   width: min(360px, 80vw);
@@ -124,13 +139,19 @@ canvas#oOrb {
   height: 100%;
   display: block;
   border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--border), 0 20px 60px rgba(0, 0, 0, .45);
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 20px 60px rgba(0, 0, 0, .45);
 }
 
 .orbglow {
   position: absolute;
   inset: -8%;
   border-radius: 50%;
-  background: radial-gradient(40% 40% at 50% 50%, rgba(7, 230, 152, .25), transparent 60%);
+  background: radial-gradient(
+    40% 40% at 50% 50%,
+    rgba(7, 230, 152, .25),
+    transparent 60%
+  );
   pointer-events: none;
 }

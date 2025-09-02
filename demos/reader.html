@@ -17,108 +17,12 @@
   <link rel="stylesheet" href="/assets/css/layout/_header.css">
   <link rel="stylesheet" href="/assets/css/layout/_footer.css">
 
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="/assets/css/pages/try/reader/_index.css">
+
   <!-- Fix lado a lado + contorno de prueba -->
   <style>
-    .page-try .demo-grid{
-      display:grid!important;
-      grid-template-columns:1.1fr .9fr!important;
-      gap:20px; align-items:start;
-    }
-    .page-try .demo-grid>*{ min-width:0; }
-    .page-try .card{ border:1px solid rgba(255,255,255,.2); }
 
-
-    /* Pre/code con scroll y line-height cómodo */
-    .page-try pre.code{
-      background:#0b1222; border:1px solid rgba(255,255,255,.12);
-      border-radius:12px; padding:12px 14px;
-      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size:.92rem; line-height:1.55; overflow:auto; white-space:pre;
-    }
-
-    /* Respiración tipográfica */
-    .page-try .card{ line-height:1.6; }
-    .page-try .card p{ margin:.55rem 0; }
-    .page-try ul{ margin:.6rem 0 1rem; padding-left:1.1rem; }
-    .page-try li{ margin:.35rem 0; }
-    .page-try .sep{ border-top:1px solid rgba(255,255,255,.1); margin:1.2rem 0; }
-
-    /* === ATTACHMENT ZONE — versión visible (como screenshot) === */
-    .page-try .card .drop{
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.6rem;
-      width:100%; text-align:center;
-      min-height:260px;
-
-      /* borde dashed bien visible + esquinas grandes */
-      border:2px dashed #7dd3fc !important;         /* cyan claro, visible */
-      border-radius:20px !important;
-
-      /* glow sutil de fondo */
-      background:
-        radial-gradient(120% 140% at 50% -20%, rgba(125,211,252,.18), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.06)) !important;
-
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-      padding:20px;
-      transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .12s ease;
-    }
-    .page-try .card .drop:hover{
-      border-color:#22d3ee !important;              /* más cian en hover */
-      background:
-        radial-gradient(120% 140% at 50% -20%, rgba(34,211,238,.26), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.08)) !important;
-      box-shadow: 0 6px 22px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
-      transform: translateY(-1px);
-    }
-    .page-try .card .drop.is-dragover,
-    .page-try .card .drop.drag,
-    .page-try .card .drop:focus-visible{
-      outline:none;
-      border-color:#22d3ee !important;
-      background:
-        radial-gradient(120% 140% at 50% -20%, rgba(34,211,238,.32), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.10)) !important;
-      box-shadow: 0 8px 26px rgba(34,211,238,.20);
-    }
-
-    /* detalles */
-    .page-try .card .dzicon{ font-size:34px; line-height:1; opacity:.95; }
-    .page-try .card .drop p{ margin:0; }
-    .page-try .card .link-underline{ text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
-
-    /* CTA: botones principales */
-    .page-try .cta {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;     /* centrados en el ancho */
-      gap: 1rem;                   /* más espacio entre botones */
-      margin-top: 1.1rem;          /* separar del drop zone */
-      margin-bottom: 1rem;         /* aire antes del contador */
-    }
-
-    /* Que cada botón tenga un tamaño mínimo cómodo */
-    .page-try .cta .btn {
-      min-width: 180px;
-      text-align: center;
-    }
-
-    /* Sección de estado (count + demo ready) */
-    .page-try .status-block {
-      margin-top: 1rem;
-      margin-bottom: 1.2rem;
-      font-size: .95rem;
-      color: var(--muted, #a9b4c9);
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    /* Toggle List/Folders más separado */
-    .page-try .view-toggle {
-      display: flex;
-      justify-content: center;
-      gap: .8rem;
-      margin-top: .8rem;
-    }
 
 
   </style>

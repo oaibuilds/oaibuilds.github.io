@@ -1,25 +1,26 @@
 /* ===================== Utilities ===================== */
 
-/* Flexbox utility */
+/* ---------- Flexbox ---------- */
 .flex {
   display: flex;
   gap: var(--g-3);
 }
 
-/* Grid utility */
+/* ---------- Grid ---------- */
 .grid {
   display: grid;
   gap: var(--g-3);
 }
 
-/* Centered utility */
+/* ---------- Centered (flexbox centering) ---------- */
 .centered {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Button common style */
+
+/* ---------- Buttons ---------- */
 .btn {
   padding: .7rem 1.05rem;
   border-radius: 999px;
@@ -30,22 +31,23 @@
   align-items: center;
   justify-content: center;
   gap: .5rem;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition: transform .15s ease, box-shadow .2s ease;
 }
 
-/* Button primary style */
 .btn.primary {
   background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
   color: #eaffff;
   box-shadow: 0 10px 24px rgba(34, 211, 238, .18);
 }
 
-/* Hand cursor utility */
+
+/* ---------- Cursor ---------- */
 .cursor-pointer {
   cursor: pointer;
 }
 
-/* Hide element utility */
+
+/* ---------- Screen-reader only (hide visually) ---------- */
 .sr-only {
   position: absolute !important;
   width: 1px;

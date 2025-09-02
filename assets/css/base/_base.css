@@ -7,28 +7,33 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Definir las variables globales */
+
+/* ---------- Global variables ---------- */
 :root {
-  --bg: #0a0e1a;   /* Fondo oscuro */
-  --txt: #e7eefc;   /* Color del texto */
-  --fs-3: 1rem;     /* Tamaño de fuente */
-  --ff: 'Space Grotesk', system-ui, sans-serif;  /* Tipografía */
-  --card:#0c1224;
-  --brand-1: #6366f1;  /* Color principal */
-  --brand-2: #059669;  /* Segundo color principal */
-  --border: #1a2032; /* Color de borde */
-  --g-3: 1rem; /* Espaciado entre elementos */
-  --g-6: 2rem; /* Espaciado mayor */
-  --r-2: 8px; /* Radio de bordes de la tarjeta */
-  --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  --bg: #0a0e1a;                                  /* Background color (dark) */
+  --txt: #e7eefc;                                 /* Main text color */
+  --fs-3: 1rem;                                   /* Base font size */
+  --ff: 'Space Grotesk', system-ui, sans-serif;   /* Font family */
+
+  --card: #0c1224;                                /* Card background */
+  --brand-1: #6366f1;                             /* Primary brand color */
+  --brand-2: #059669;                             /* Secondary brand color */
+  --border: #1a2032;                              /* Border color */
+
+  --g-3: 1rem;                                    /* Small gap */
+  --g-6: 2rem;                                    /* Large gap */
+  --r-2: 8px;                                     /* Border radius */
+  --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.1);       /* Card shadow */
 }
 
-/* Fondo y estilos del body */
+
+/* ---------- Body ---------- */
 body {
   margin: 0;
-  background: radial-gradient(900px 520px at 8% -10%, rgba(125, 211, 252, .10), transparent 60%),
+  background: 
+    radial-gradient(900px 520px at 8% -10%, rgba(125, 211, 252, .10), transparent 60%),
     radial-gradient(900px 520px at 92% 110%, rgba(34, 211, 238, .10), transparent 60%),
-    var(--bg);  /* Aquí se utiliza la variable definida */
+    var(--bg);
   color: var(--txt);
   font: 400 var(--fs-3) / 1.6 var(--ff);
   -webkit-font-smoothing: antialiased;
@@ -36,10 +41,14 @@ body {
   overflow-x: hidden;
 }
 
+
+/* ---------- Links ---------- */
 a {
   color: inherit;
 }
 
+
+/* ---------- Accessibility helpers ---------- */
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -52,6 +61,8 @@ a {
   border: 0;
 }
 
+
+/* ---------- Layout containers ---------- */
 .container {
   max-width: 1120px;
   margin: 0 auto;
@@ -63,12 +74,16 @@ a {
   padding: var(--g-6) 0;
 }
 
+
+/* ---------- Focus styles ---------- */
 :where(a, button, [tabindex]):focus {
   outline: 2px solid var(--brand-1);
   outline-offset: 2px;
   border-radius: 6px;
 }
 
+
+/* ---------- Skip link (accessibility) ---------- */
 .skip {
   position: absolute;
   top: -40px;

@@ -1,14 +1,19 @@
-/* ===== Landing — Variables específicas (emerald/teal) ===== */
+/* ===================== Landing (Emerald/Teal Theme) ===================== */
+
+/* ---------- Page variables ---------- */
 .page-landing {
   --ink: #e7eefc;
   --muted: #a1aab7;
+
   --bg-deep: #0a0e1a;
   --surface-0: #0a0e1a;
-  --surface-1: #10162A;
+  --surface-1: #10162a;
   --surface-2: #1e253e;
-  --edge: rgba(255,255,255,.15);
-  --edge-strong: rgba(255,255,255,.25);
-  --glow: rgba(16,185,129,.25);
+
+  --edge: rgba(255, 255, 255, .15);
+  --edge-strong: rgba(255, 255, 255, .25);
+  --glow: rgba(16, 185, 129, .25);
+
   --acc: #10b981;
   --acc-2: #059669;
   --grad-start: #6cffb3;
@@ -22,33 +27,48 @@
   --brand-1: var(--acc);
   --brand-2: var(--acc-2);
 
+  /* nav */
   --nav-fg: var(--ink);
   --nav-fg-active: var(--acc);
   --nav-bg-hover: color-mix(in srgb, var(--acc) 12%, transparent);
   --nav-shadow-hover: 0 0 12px color-mix(in srgb, var(--acc) 45%, transparent);
 
+  /* buttons */
   --btn-fg: var(--ink);
-  --btn-bg: rgba(255,255,255,.05);
+  --btn-bg: rgba(255, 255, 255, .05);
   --btn-border: var(--edge);
-  --btn-hover-bg: rgba(255,255,255,.08);
+  --btn-hover-bg: rgba(255, 255, 255, .08);
   --btn-hover-border: var(--edge-strong);
   --btn-hover-transform: translateY(-1px);
-  --btn-shadow: 0 6px 18px rgba(0,0,0,.20);
+  --btn-shadow: 0 6px 18px rgba(0, 0, 0, .20);
 
   --btn-primary-fg: #eaffff;
-  --btn-primary-bg: linear-gradient(180deg, color-mix(in srgb, var(--acc-2) 18%, transparent), color-mix(in srgb, var(--acc-2) 8%, transparent));
-  --btn-primary-bg-hover: linear-gradient(180deg, color-mix(in srgb, var(--acc-2) 24%, transparent), color-mix(in srgb, var(--acc-2) 12%, transparent));
+  --btn-primary-bg: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--acc-2) 18%, transparent),
+    color-mix(in srgb, var(--acc-2) 8%, transparent)
+  );
+  --btn-primary-bg-hover: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--acc-2) 24%, transparent),
+    color-mix(in srgb, var(--acc-2) 12%, transparent)
+  );
   --btn-primary-border: color-mix(in srgb, var(--acc-2) 35%, transparent);
   --btn-primary-border-hover: color-mix(in srgb, var(--acc-2) 45%, transparent);
   --btn-primary-shadow: 0 8px 22px color-mix(in srgb, var(--acc-2) 22%, transparent);
   --btn-primary-shadow-hover: 0 14px 30px color-mix(in srgb, var(--acc-2) 26%, transparent);
 
+  /* scrollbars */
   --scroll-c1: var(--acc);
   --scroll-c2: var(--acc-2);
   --scroll-c3: #9ce8c9;
 
   background:
-    radial-gradient(1200px 700px at 80% -10%, color-mix(in srgb, var(--acc) 12%, transparent), transparent 60%),
+    radial-gradient(
+      1200px 700px at 80% -10%,
+      color-mix(in srgb, var(--acc) 12%, transparent),
+      transparent 60%
+    ),
     var(--bg-deep);
   color: var(--ink);
   font-family: var(--ff);
@@ -56,8 +76,7 @@
 }
 
 
-
-/* ===== Hero Section ===== */
+/* ===================== Hero Section ===================== */
 .page-landing .h-title {
   font-size: clamp(3rem, 6vw, 5rem);
 }
@@ -77,12 +96,7 @@
   animation: fadeUp .6s ease both;
 }
 
-.page-landing .h-tag .emphasize.thirty {
-  color: var(--acc);
-  font-weight: 800;
-  text-shadow: 0 0 10px rgba(34, 197, 94, .45);
-}
-
+.page-landing .h-tag .emphasize.thirty,
 .page-landing .h-tag .emphasize.zero {
   color: var(--acc);
   font-weight: 800;
@@ -90,7 +104,7 @@
 }
 
 
-/* ===== Section text size and layout ===== */
+/* ===================== Section text ===================== */
 .section p,
 .section li {
   font-size: 1.15rem;
@@ -98,14 +112,16 @@
   margin-inline: auto;
 }
 
-/* ===== Shared card-like containers ===== */
+
+/* ===================== Shared containers ===================== */
 .card,
 .ai-banner {
   background-color: var(--surface-1);
   border: 1px solid var(--edge);
 }
 
-/* ===== About Section ===== */
+
+/* ===================== About Section ===================== */
 .about-wrap {
   display: flex;
   flex-direction: column;
@@ -140,23 +156,23 @@
 .about-banner img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
   object-position: 50% 26%;
-  display: block;
 }
 
 .about-banner figcaption {
   margin: 0;
   padding: .55rem .9rem;
-  text-align: center;
   font-size: .95rem;
+  text-align: center;
   color: var(--muted);
   background: rgba(0, 0, 0, .22);
   border-top: 1px solid var(--edge);
 }
 
 
-/* ===== Responsive layout adjustments ===== */
+/* ---------- Responsive adjustments ---------- */
 @media (max-width: 960px) {
   .about-content {
     grid-template-columns: 1fr;
@@ -177,7 +193,7 @@
 }
 
 
-/* ===== Timeline Enhancements ===== */
+/* ===================== Timeline Enhancements ===================== */
 .timeline .stream :is(time, .year, .eyebrow, .kicker, .meta-year) {
   color: var(--muted);
   opacity: 1 !important;
@@ -187,35 +203,35 @@
 .timeline .stream .milestone-head,
 .timeline .stream h3 {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: .6ch;
-  flex-wrap: wrap;
-  background: none;
-  text-shadow: none;
-  color: var(--ink);
+  margin: 0 0 .4rem 0;
   font-weight: 700;
   font-size: clamp(1.2rem, 1.8vw, 1.4rem);
-  margin: 0 0 .4rem 0;
+  color: var(--ink);
+  background: none;
+  text-shadow: none;
 }
 
 .timeline .stream h3 > time {
-  color: #cfd6e6;
-  font-weight: 800;
   font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-weight: 800;
+  color: #cfd6e6;
 }
 
 .timeline .stream .milestone-head .label,
 .timeline .stream h3 .label {
-  color: #8a94a8;
-  font-weight: 600;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 600;
+  color: #8a94a8;
 }
 
 .timeline .list .item time,
 .timeline .list .item .year {
-  color: #8a94a8;
-  font-weight: 600;
   font-size: 1rem;
+  font-weight: 600;
+  color: #8a94a8;
 }
 
 .stream .list {
@@ -227,12 +243,11 @@
 .year-panel {
   display: flex;
   flex-direction: column;
-  gap: 20px; 
+  gap: 20px;
 }
 
 
-
-/* ===== A11y Utility ===== */
+/* ===================== A11y Utility ===================== */
 .visually-hidden {
   position: absolute !important;
   width: 1px;

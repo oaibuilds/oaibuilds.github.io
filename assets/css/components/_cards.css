@@ -1,80 +1,101 @@
 /* ===================== Cards ===================== */
 
-.grid{
-  display:grid;
-  gap:var(--g-3);
-  grid-template-columns:1fr;      /* 1 col en mobile */
-}
-@media (min-width:780px){
-  .grid.cols-2{ grid-template-columns:1fr 1fr; } /* 2 cols en desktop */
+/* ---------- Grid for cards ---------- */
+.grid {
+  display: grid;
+  gap: var(--g-3);
+  grid-template-columns: 1fr; /* single column on mobile */
 }
 
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)), var(--card);
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:var(--r-2);
-  padding:1.25rem;
-  box-shadow:var(--shadow-1);
-  opacity:1;                      /* visibles por defecto */
-  transform:none;
+@media (min-width: 780px) {
+  .grid.cols-2 {
+    grid-template-columns: 1fr 1fr; /* 2 columns on desktop */
+  }
 }
 
-.card-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:var(--g-2);
-  margin-bottom:.6rem;
-}
 
-.card-head h2{
-  margin:0;
-  font-size:1.1rem;
-  color:var(--brand-2);
-  font-weight:600;
-}
-
-.card p{
-  margin:.45rem 0 1rem;
-  color:var(--muted);
-}
-
-/* Badges + status (ojo: contenedor .tags, no .badges) */
-.tags{ display:flex; gap:.5rem; align-items:center; }
-.tags .badge{
-  padding:.25em .6em;
-  border-radius:6px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.14);
-  font-size:.78rem;
-  color:var(--muted);
-}
-.status{ font-size:.85rem; font-weight:600; }
-.status.ready{ color:var(--ok); }
-.status.building{ color:var(--warn); }
-.status.soon{ color:var(--muted); }
-
+/* ---------- Card base ---------- */
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
-              var(--card-bg);
-  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, 0)),
+              var(--card-bg, var(--card));
+  border: 1px solid rgba(255, 255, 255, .08);
   border-radius: var(--r-2);
   padding: 1.25rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,.3);
-  color: var(--txt); /* asegúrate que no caiga en muted */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+  color: var(--txt); /* ensure text is not muted */
+  opacity: 1;
+  transform: none;
 }
 
+
+/* ---------- Card header ---------- */
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--g-2);
+  margin-bottom: .6rem;
+}
+
+.card-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brand-2);
+}
+
+
+/* ---------- Card text ---------- */
+.card p {
+  margin: .45rem 0 1rem;
+  color: var(--muted);
+}
+
+
+/* ---------- Tags & status ---------- */
+.tags {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.tags .badge {
+  padding: .25em .6em;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .14);
+  font-size: .78rem;
+  color: var(--muted);
+}
+
+.status {
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.status.ready {
+  color: var(--ok);
+}
+
+.status.building {
+  color: var(--warn);
+}
+
+.status.soon {
+  color: var(--muted);
+}
+
+
+/* ---------- CTA inside cards ---------- */
 .card .cta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--g-2);        /* Aplica espacio entre botones */
+  gap: var(--g-2);
   justify-content: flex-start;
   margin-top: 1rem;
 }
 
 .card .btn {
   flex: 1 1 auto;
-  max-width: max-content;  /* Evita que se estiren */
+  max-width: max-content; /* prevent stretching */
 }
-
-

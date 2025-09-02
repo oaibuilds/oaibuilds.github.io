@@ -1,28 +1,29 @@
-/* ===================== Design tokens (emerald/teal) ===================== */
+/* ===================== Design Tokens (Emerald/Teal) ===================== */
 :root {
-  /* Base surfaces */
-  --bg:       #0a0e1a;   /* Fondo principal */
-  --bg-deep:  #05070f;   /* Más profundo, degradados */
-  --txt:      #f5f9ff;   /* Texto principal (casi blanco) */
-  --muted:    #a1aab7;   /* Gris neutro medio */
-  --card:     #111827;   /* Cards/panels */
-  --card-bg:  #111827;
-  --border:   #1f2937;
-  --glass:    rgba(10,14,26,.66);
+  /* ---------- Base surfaces ---------- */
+  --bg:       #0a0e1a;   /* Main background */
+  --bg-deep:  #05070f;   /* Deeper background (for gradients) */
+  --txt:      #f5f9ff;   /* Primary text (almost white) */
+  --muted:    #a1aab7;   /* Neutral gray (medium) */
+  --card:     #111827;   /* Card background */
+  --card-bg:  #111827;   /* Alias for cards/panels */
+  --border:   #1f2937;   /* Border color */
+  --glass:    rgba(10, 14, 26, .66); /* Glass effect */
 
-  /* Brand – acentos verdosos premium */
-  --brand-1:  #10b981;   /* emerald (verde limpio, vibrante) */
-  --brand-2:  #059669;   /* teal profundo, elegante */
+  /* ---------- Brand accents ---------- */
+  --brand-1:  #10b981;   /* Emerald (clean, vibrant green) */
+  --brand-2:  #059669;   /* Deep teal, elegant */
 
-  /* Semantics */
-  --ok:   #22c55e;       /* verde éxito */
-  --warn: #f59e0b;       /* naranja warning */
+  /* ---------- Semantic colors ---------- */
+  --ok:       #22c55e;   /* Success green */
+  --warn:     #f59e0b;   /* Warning orange */
 }
 
-/* Fondo global coherente */
+
+/* ===================== Global Background ===================== */
 body {
   background:
-    radial-gradient(1200px 700px at 80% -10%, rgba(16,185,129,.12), transparent 60%),
+    radial-gradient(1200px 700px at 80% -10%, rgba(16, 185, 129, .12), transparent 60%),
     var(--bg-deep);
   color: var(--txt);
 }
