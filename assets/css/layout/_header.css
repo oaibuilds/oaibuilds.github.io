@@ -14,7 +14,7 @@ header.site {
 }
 
 /* If the browser supports blur, apply a subtle blur without whitening */
-@supports (backdrop-filter: blur(6px)) {
+@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
   header.site.use-glass {
     background: linear-gradient(180deg, rgba(10,14,26,.92), rgba(10,14,26,.88));
     -webkit-backdrop-filter: saturate(140%) blur(6px);
@@ -23,64 +23,113 @@ header.site {
 }
 
 /* Layout */
-header.site .nav { 
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
-  padding: .9rem 0; 
+header.site .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 0;
 }
 
 /* Brand */
 header.site .brand {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   gap: .4rem;
-  font-weight: 600; 
-  font-size: 1rem; 
-  color: var(--ink); 
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
   text-decoration: none;
 }
-header.site .brand .dot { 
+header.site .brand .dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--acc-2);
-  box-shadow: 0 0 8px var(--acc-2); 
+  box-shadow: 0 0 8px var(--acc-2);
 }
 
 /* Navigation links */
-header.site .primary .container { 
-  display: flex; 
-  gap: 1.5rem; 
+header.site .primary .container {
+  display: flex;
+  gap: 1.5rem;
 }
 header.site .primary a {
-  text-decoration: none; 
-  color: var(--muted); 
+  text-decoration: none;
+  color: var(--muted);
   font-weight: 500;
-  padding: .4rem .6rem; 
+  padding: .4rem .6rem;
   border-radius: 10px;
   transition: color .2s ease, background .2s ease, text-shadow .2s ease;
 }
 header.site .primary a:hover,
-header.site .primary a[aria-current="page"] {
-  color: var(--ink); 
-  background: rgba(125,211,252,.10); 
+header.site .primary a[aria-current="page"],
+header.site .primary a:focus-visible {
+  color: var(--ink);
+  background: rgba(125,211,252,.10);
   text-shadow: 0 0 10px rgba(125,211,252,.35);
+  outline: none;
 }
 
-/* Mobile menu */
-#menu-toggle { display: none; }
-.menu-btn { 
-  display: none; 
-  cursor: pointer; 
-  font-size: 1.25rem; 
-  color: var(--ink); 
+/* Mobile menu (checkbox hack) */
+#menu-toggle { 
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
 }
-@media (max-width:760px) {
-  header.site .primary .container { 
-    display: none; 
-    flex-direction: column; 
-    align-items: flex-start; 
-    padding: 1rem 0; 
+
+/* Menu button (hamburger) */
+.menu-btn {
+  display: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+}
+.menu-btn:focus-visible {
+  outline: 2px solid rgba(125,211,252,.6);
+  outline-offset: 2px;
+}
+
+/* Responsive behavior */
+@media (max-width: 760px) {
+  /* Hide nav links by default on mobile */
+  header.site .primary .container {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0;
+    gap: .75rem;
   }
-  #menu-toggle:checked ~ nav .container { d
+
+  /* Show hamburger */
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* When toggled, show the nav */
+  /* Structure expected:
+     <input id="menu-toggle" type="checkbox">
+     <nav class="primary"> <div class="container"> ...links... </div> </nav>
+  */
+  #menu-toggle:checked ~ nav.primary .container {
+    display: flex;
+  }
+}
+
+/* Reduce motion niceties */
+@media (prefers-reduced-motion: reduce) {
+  header.site .primary a {
+    transition: none;
+  }
+}
