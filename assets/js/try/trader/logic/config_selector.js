@@ -1,5 +1,5 @@
 // /trader/logic/config_selector.js
-// Devuelve una config simple para la demo (ajústala si quieres otro símbolo/intervalo)
+// Returns a simple config for the demo (adjust if you want another symbol/interval)
 export function selectConfig({ preset = 'ema-rsi', seed = 42 } = {}) {
   return {
     preset,
@@ -10,5 +10,5 @@ export function selectConfig({ preset = 'ema-rsi', seed = 42 } = {}) {
   };
 }
 
-// (opcional) compat
+// (optional) compatibility export
 export default { selectConfig };

@@ -2,8 +2,11 @@
 import { ema, rsi } from '../utils/indicators.js';
 
 /**
- * EMA Cross + RSI Filter
- * @param {{c:number[]}} candles - objeto con cierre en candles.c
+ * EMA Cross + RSI Filter strategy.
+ * - Uses a fast/slow EMA crossover to trigger entries.
+ * - RSI acts as a filter to allow/disallow longs.
+ *
+ * @param {{c:number[]}} candles - Candles object with close prices in `candles.c`
  * @param {{fast?:number, slow?:number, rsiP?:number, rsiMin?:number, rsiMax?:number}} params
  * @returns {{signals:('flat'|'long'|null)[], name:string}}
  */
@@ -32,10 +35,11 @@ export function emaRsiStrategy(candles, params = {}) {
   return { signals, name: 'EMA+RSI' };
 }
 
-/* 👇 Compat exports (no toques nada más en tu código):
-   - named: emaRsi (lo que te está pidiendo trader.js)
-   - named: strategy (por si tu engine busca 'strategy')
-   - default: para imports por defecto
-*/
+/**
+ * Compatibility exports:
+ * - named: emaRsi (used by trader.js)
+ * - named: strategy (in case engine expects it)
+ * - default: for default imports
+ */
 export { emaRsiStrategy as emaRsi, emaRsiStrategy as strategy };
 export default emaRsiStrategy;
