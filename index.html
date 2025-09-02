@@ -6,72 +6,85 @@
   <title>oaibuilds — O-Project</title>
   <meta name="description" content="O-Project by oaibuilds. Intelligent systems, agentic architectures, and tools." />
   <link rel="canonical" href="https://oaibuilds.com/" />
+
+  <!-- Color scheme / theme color -->
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="oaibuilds — O-Project" />
   <meta property="og:description" content="Intelligent systems & agentic architectures for an AI-driven world." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://oaibuilds.com/" />
-  <meta property="og:image" content="https://oaibuilds.com/og-image.png" />
+  <meta property="og:image" content="https://oaibuilds.com/assets/img/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="assets/css/style.css"> 
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/base/_base.css">
   <link rel="stylesheet" href="assets/css/components/_buttons.css">
   <link rel="stylesheet" href="assets/css/layout/_header.css">
   <link rel="stylesheet" href="assets/css/layout/_footer.css">
   <link rel="stylesheet" href="assets/css/pages/landing/_index.css">
-
 </head>
-<body class="page-landing">
 
+<body class="page-landing">
+  <!-- Skip link for accessibility -->
   <a href="#main" class="skip">Skip to content</a>
 
+  <!-- Header injected via partials.js -->
   <div id="site-header"></div>
+
   <main id="main">
-  <section class="container hero" id="home">
-    <div>
-      <h1 class="h-title">
-        O-Project by <span class="brandmark highlight">oaibuilds</span>
-      </h1>
+    <!-- ========== HERO ========== -->
+    <section class="container hero" id="home">
+      <div>
+        <h1 class="h-title">
+          O-Project by <span class="brandmark highlight">oaibuilds</span>
+        </h1>
 
-      <p class="h-sub">
-        O-Project was born with the idea of building modular intelligence — 
-        agents that don’t just support, but 
-        <strong>operate, scale and create impact.</strong>
-        <span class="nowrap"><strong> — Oriol Martinez</strong></span>
-      </p>
+        <p class="h-sub">
+          O-Project was born with the idea of building modular intelligence —<br>
+          <strong>AI agents</strong> that don’t just support, but
+          <strong>operate, scale and create impact.</strong>
+          <span class="nowrap"><strong> — Oriol Martinez</strong></span>
+        </p>
 
-      <p class="h-tag">
-        From <span class="emphasize zero">Zero</span> to Scalable Intelligence<br>
-        — Starting at&nbsp;<span class="emphasize thirty">30</span>
-      </p>
+        <p class="h-tag">
+          From <span class="emphasize zero">Zero</span> to Scalable Intelligence<br>
+          — Starting at&nbsp;<span class="emphasize thirty">30</span>
+        </p>
 
-      <div class="cta">
-        <a class="btn primary btn-try" href="/try.html" aria-label="Try O-Project demo">🚀 Try O-Project</a>
-        <a class="btn primary" href="#projects">Explore Projects</a>
-        <a class="btn" href="mailto:oriol@oaibuilds.com">Contact</a>
+        <div class="cta">
+          <a class="btn primary btn-try" href="/try.html" aria-label="Try O-Project demo">🚀 Try O-Project</a>
+          <a class="btn primary" href="#projects">Explore Projects</a>
+          <a class="btn" href="mailto:oriol@oaibuilds.com">Contact</a>
+        </div>
+
+        <p class="subnote">A living lab of vertical AI agents designed to read, decide and operate.</p>
       </div>
 
-
-      <p class="subnote">A living lab of vertical AI agents designed to read, decide and operate.</p>
-      </div>
+      <!-- Orb visual -->
       <div class="orbwrap" aria-hidden="true">
         <canvas id="oOrb"></canvas>
         <div class="orbglow"></div>
       </div>
     </section>
 
+    <!-- ========== INTRO BANNER ========== -->
     <section class="container">
       <div class="ai-banner">
         <p>Minimalism meets intelligence — Building systems that think, adapt and scale.</p>
+
         <div class="badges" aria-label="stack badges">
           <span class="badge">Python</span>
           <span class="badge">AI Agents</span>
@@ -79,18 +92,22 @@
           <span class="badge">Backtesting</span>
           <span class="badge">Orchestration</span>
         </div>
+
         <div class="highlight" role="note">
           <strong>New:</strong> O-Scanner reborn as <strong>O-Reader</strong> — smarter reading, cleaner routing, clearer output.
         </div>
       </div>
+
       <div class="divider" role="presentation"></div>
     </section>
 
+    <!-- ========== ABOUT + TIMELINE ========== -->
     <section id="about" class="container section">
       <article class="card reveal about-wrap">
         <header><h2>About</h2></header>
 
         <div class="about-content">
+          <!-- Left: text -->
           <div class="about-text">
             <p><strong>I'm Oriol Martinez.</strong> At 30, I started from zero to build a solid foundation in AI and intelligent automation.</p>
             <p>Between <strong>2022–2024</strong>, I completed an <strong>Associate degree in Software Engineering</strong> (focus on application development) with <strong>Honours</strong> (top GPA), plus an internship at <strong>Inetum</strong> (backend, APIs, microservices). That gave me core software engineering discipline.</p>
@@ -99,20 +116,26 @@
             <p>I’m also learning Mandarin to broaden my global perspective and connect with diverse innovation ecosystems.</p>
           </div>
 
+          <!-- Right: image -->
           <figure class="about-banner">
-            <img src="/assets/img/oriol-hust.jpg"
-                alt="Oriol Martinez at Huazhong University of Science and Technology"
-                loading="lazy">
-            <figcaption class="about-caption">Huazhong University of Science and Technology — Wuhan, China (2025)</figcaption>
+            <img
+              src="/assets/img/oriol-hust.jpg"
+              alt="Oriol Martinez at Huazhong University of Science and Technology"
+              loading="lazy"
+            >
+            <figcaption class="about-caption">
+              Huazhong University of Science and Technology — Wuhan, China (2025)
+            </figcaption>
           </figure>
         </div>
 
-        <!-- Timeline debajo (no tocar tu markup interno) -->
+        <!-- Timeline -->
         <div class="timeline" id="timeline" aria-label="Career timeline">
           <aside class="rail" aria-hidden="false">
             <div class="yearbox" aria-live="polite" aria-atomic="true">
               <div class="label">Year</div>
               <div class="value" id="tlYear">—</div>
+
               <div class="filters" role="toolbar" aria-label="Filter timeline">
                 <button class="chip" data-filter="all" aria-pressed="true">All</button>
                 <button class="chip" data-filter="education" aria-pressed="false">Education</button>
@@ -120,62 +143,62 @@
                 <button class="chip" data-filter="award" aria-pressed="false">Award</button>
               </div>
             </div>
+
             <div class="progresswrap" aria-hidden="true">
-              <div class="progress"><div class="fill" id="tlFill"></div></div>
+              <div class="progress">
+                <div class="fill" id="tlFill"></div>
+              </div>
             </div>
           </aside>
 
           <div class="stream">
             <ol class="list" id="tlList" aria-describedby="tl-helper"></ol>
-            <p id="tl-helper" class="visually-hidden">Use Arrow Up/Down to move between items. Press Enter to expand details.</p>
+            <p id="tl-helper" class="visually-hidden">
+              Use Arrow Up/Down to move between items. Press Enter to expand details.
+            </p>
           </div>
         </div>
       </article>
-
     </section>
 
+    <!-- ========== PROJECTS ========== -->
     <section id="projects" class="container section">
       <article class="card reveal">
         <header><h2>Projects</h2></header>
         <p><strong>The O-Project</strong> is an evolving ecosystem of <strong>vertical AI agents</strong> — each engineered for a single domain (documents, markets, data streams, orchestration) but designed to interoperate seamlessly.</p>
-        
         <p>Unlike standalone tools, agents share a <strong>unified orchestration layer</strong> that enables collaboration, scalability, and adaptive intelligence across different contexts.</p>
-        
-        <p>Future modalities will expand deployment options: 
-          <strong>in-browser agents</strong> running locally for privacy-first tasks, 
-          <strong>remote orchestration</strong> powered by distributed backends, 
-          and <strong>LLM-augmented pipelines</strong> for reasoning, enrichment, and decision support.</p>
-        
+        <p>Future modalities will expand deployment options:
+          <strong>in-browser agents</strong> running locally for privacy-first tasks,
+          <strong>remote orchestration</strong> powered by distributed backends,
+          and <strong>LLM-augmented pipelines</strong> for reasoning, enrichment, and decision support.
+        </p>
         <p>The vision: <strong>modular intelligence</strong> — AI components that scale from simple automations to full agentic architectures, driving measurable real-world impact.</p>
       </article>
-
 
       <div class="grid cols-2" style="margin-top:var(--g-3)">
         <article class="card reveal">
           <h2>O-Reader</h2>
-          <p><strong>O-Reader</strong> is a <strong>GPT-powered document intelligence tool</strong> that automatically classifies, organizes, and summarizes PDFs.  
-          Using <strong>semantic analysis</strong>, it transforms unstructured files into structured knowledge with consistent naming and metadata.</p>
-
+          <p><strong>O-Reader</strong> is a <strong>GPT-powered document intelligence tool</strong> that automatically classifies, organizes, and summarizes PDFs.
+            Using <strong>semantic analysis</strong>, it transforms unstructured files into structured knowledge with consistent naming and metadata.</p>
           <p>O-Reader is designed to streamline workflows — from personal research to enterprise-scale document routing — with local-first processing and extensibility for remote LLMs.</p>
-
           <a class="btn" href="https://github.com/oaibuilds/O-Reader" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
 
         <article class="card reveal">
           <h2>O-Trader</h2>
-          <p><strong>O-Trader</strong> is an <strong>AI-driven trading framework</strong> designed for disciplined execution, robust backtesting, and long-term capital growth.  
-          It integrates <strong>signal detection, risk management, and automated execution</strong> into a modular system that adapts to market dynamics.</p>
-
+          <p><strong>O-Trader</strong> is an <strong>AI-driven trading framework</strong> designed for disciplined execution, robust backtesting, and long-term capital growth.
+            It integrates <strong>signal detection, risk management, and automated execution</strong> into a modular system that adapts to market dynamics.</p>
           <p>Built for both experimentation and scalability, O-Trader provides a <strong>sandbox environment</strong> for strategy testing while maintaining a clear path to production-ready automation.</p>
-
           <a class="btn" href="https://github.com/oaibuilds/O-Trader" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
       </div>
     </section>
 
+    <!-- ========== ROADMAP ========== -->
     <section id="roadmap" class="container section">
       <article class="card reveal">
         <header><h2>Roadmap 2025–2026</h2></header>
+
         <div class="roadmap">
           <div class="stage">
             <h4>Now</h4>
@@ -184,6 +207,7 @@
               <li><strong>O-Reader</strong> — PDF triage & routing</li>
             </ul>
           </div>
+
           <div class="stage">
             <h4>Next</h4>
             <ul>
@@ -191,6 +215,7 @@
               <li><strong>O-Core</strong> — Modular orchestration & system logic</li>
             </ul>
           </div>
+
           <div class="stage">
             <h4>Later</h4>
             <ul>
@@ -202,10 +227,11 @@
     </section>
   </main>
 
+  <!-- Footer injected via partials.js -->
   <div id="site-footer"></div>
 
+  <!-- Scripts -->
   <script type="module" src="assets/js/main.js"></script>
   <script src="assets/js/partials.js" defer></script>
-
 </body>
 </html>

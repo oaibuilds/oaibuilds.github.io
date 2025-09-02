@@ -6,62 +6,86 @@
   <title>Try O-Reader · O-Reader Demo</title>
   <meta name="description" content="Frontend-only demo of O-Reader, an AI-powered document classifier." />
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://oaibuilds.com/demos/reader.html" />
+
+  <!-- Color scheme / theme color -->
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff"  media="(prefers-color-scheme: light)">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Try O-Reader — Frontend Demo" />
+  <meta property="og:description" content="Classify, rename and route PDFs locally in your browser. Privacy-first demo of O-Reader." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://oaibuilds.com/demos/reader.html" />
+  <meta property="og:image" content="https://oaibuilds.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <!-- Base styles -->
   <link rel="stylesheet" href="/assets/css/base/_base.css">
   <link rel="stylesheet" href="/assets/css/base/_utilities.css">
+
+  <!-- Global components -->
   <link rel="stylesheet" href="/assets/css/components/_buttons.css">
   <link rel="stylesheet" href="/assets/css/components/_cards.css">
+
+  <!-- Layout -->
   <link rel="stylesheet" href="/assets/css/layout/_header.css">
   <link rel="stylesheet" href="/assets/css/layout/_footer.css">
 
-  <!-- Page CSS -->
+  <!-- Page-specific CSS -->
   <link rel="stylesheet" href="/assets/css/pages/try/reader/_index.css">
-
-  <!-- Fix lado a lado + contorno de prueba -->
-  <style>
-
-
-
-  </style>
 </head>
 
 <body class="page-try">
+  <!-- Skip link for accessibility -->
   <a href="#main" class="skip">Skip to content</a>
+
+  <!-- Injected site header -->
   <div id="site-header"></div>
 
+  <!-- Main content -->
   <main id="main" class="container section try-hero">
     <div class="demo-grid">
-      <!-- IZQUIERDA -->
+      <!-- LEFT: Dropzone / Controls -->
       <article class="card attach-big">
         <h2 class="panel-title">Try O-Reader</h2>
-        <p class="subtle">Frontend-only preview of <strong>O-Reader</strong>.
-          No files are uploaded; everything runs in your browser.</p>
+        <p class="subtle">
+          Frontend-only preview of <strong>O-Reader</strong>.
+          No files are uploaded; everything runs in your browser.
+        </p>
 
         <div id="dropZone" class="drop" tabindex="0" aria-label="Dropzone for PDFs">
           <div class="dzicon" aria-hidden="true">📄</div>
-          <p><strong>Drop PDFs here</strong> or
+          <p>
+            <strong>Drop PDFs here</strong> or
             <label for="fileInput" class="link-underline">choose files</label>
           </p>
           <p class="subtle mini">Accepted: .pdf — up to 10 files</p>
           <input type="file" id="fileInput" multiple accept="application/pdf" hidden />
         </div>
 
-
         <div class="cta">
           <button id="btnClassify" class="btn primary">Run demo classification</button>
-          <button id="btnSamples" class="btn">Load sample set</button>
-          <button id="btnExport" class="btn">Export CSV</button>
-          <button id="btnClear" class="btn">Clear</button>
+          <button id="btnSamples"  class="btn">Load sample set</button>
+          <button id="btnExport"   class="btn">Export CSV</button>
+          <button id="btnClear"    class="btn">Clear</button>
         </div>
 
         <div class="mini subtle"><span id="countPill">0 files</span></div>
         <div id="stats"></div>
 
         <div class="view-toggle">
-          <button id="btnList" class="btn mini" aria-pressed="true">List</button>
+          <button id="btnList"    class="btn mini" aria-pressed="true">List</button>
           <button id="btnFolders" class="btn mini" aria-pressed="false">Folders</button>
         </div>
 
@@ -69,11 +93,13 @@
 
         <h3 class="mini">Results</h3>
         <div id="log" class="log">
-          <p class="subtle mini">No files yet. Add some PDFs to see predicted labels and the renamed output.</p>
+          <p class="subtle mini">
+            No files yet. Add some PDFs to see predicted labels and the renamed output.
+          </p>
         </div>
       </article>
 
-      <!-- DERECHA -->
+      <!-- RIGHT: How the real agent works -->
       <article class="card">
         <h2 class="panel-title">What happens in the real agent?</h2>
         <ul>
@@ -88,7 +114,7 @@ git clone https://github.com/oaibuilds/O-Reader
 cd O-Reader
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-echo OPENAI_API_KEY=sk-xxx > .env
+echo OPENAI_API_KEY=sk-xxx &gt; .env
 python main.py
 </code></pre>
         <button id="copySetup" class="btn mini copybtn">Copy</button>
@@ -101,6 +127,7 @@ python main.py
         <p class="mini subtle">
           Privacy: this demo does <strong>not</strong> upload files. Everything runs in your browser to show the UX idea.
         </p>
+
         <div class="cta">
           <a class="btn" href="/try.html">← Back</a>
           <a class="btn" href="https://github.com/oaibuilds/O-Reader" target="_blank" rel="noopener">View repo →</a>
@@ -109,8 +136,10 @@ python main.py
     </div>
   </main>
 
+  <!-- Injected site footer -->
   <div id="site-footer"></div>
 
+  <!-- Scripts -->
   <script src="/assets/js/partials.js" defer></script>
   <script type="module" src="/assets/js/main.js?v=1"></script>
   <script type="module" src="/assets/js/try.js?v=1"></script>

@@ -6,33 +6,62 @@
   <title>Try O-Project · O-Trader Demo</title>
   <meta name="description" content="Frontend-only demo of O-Trader: signals, backtesting and risk management (sandbox)." />
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://oaibuilds.com/demos/trader.html" />
+
+  <!-- Color scheme / theme color -->
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff"  media="(prefers-color-scheme: light)">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Try O-Trader — Backtesting Demo" />
+  <meta property="og:description" content="Sandbox simulation of O-Trader: AI-driven trading signals, risk management, and equity backtesting — all in your browser." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://oaibuilds.com/demos/trader.html" />
+  <meta property="og:image" content="https://oaibuilds.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Site CSS -->
+  <!-- Base styles -->
   <link rel="stylesheet" href="/assets/css/base/_base.css">
   <link rel="stylesheet" href="/assets/css/base/_utilities.css">
+
+  <!-- Global components -->
   <link rel="stylesheet" href="/assets/css/components/_buttons.css">
   <link rel="stylesheet" href="/assets/css/components/_cards.css">
+
+  <!-- Layout -->
   <link rel="stylesheet" href="/assets/css/layout/_header.css">
   <link rel="stylesheet" href="/assets/css/layout/_footer.css">
 
-  <!-- Page CSS -->
+  <!-- Page-specific CSS -->
   <link rel="stylesheet" href="/assets/css/pages/try/trader/_index.css">
 </head>
 
 <body class="page-try">
+  <!-- Skip link for accessibility -->
   <a href="#main" class="skip">Skip to content</a>
+
+  <!-- Injected site header -->
   <div id="site-header"></div>
 
+  <!-- Main content -->
   <main id="main" class="container section try-hero">
     <div class="demo-grid">
       <!-- LEFT: controls -->
       <article class="card">
         <h2 class="panel-title">Try O-Trader</h2>
-        <p class="subtle">Preview of <strong>O-Trader</strong>. No brokerage connection; sandbox simulation to showcase UX.</p>
+        <p class="subtle">
+          Preview of <strong>O-Trader</strong>. No brokerage connection; sandbox simulation to showcase UX.
+        </p>
 
         <form id="cfg" class="form-grid" aria-label="Strategy configuration">
           <div class="form-row">
@@ -59,19 +88,18 @@
             <label for="seed">Random seed</label>
             <input id="seed" name="seed" type="number" value="42" step="1" />
           </div>
+
           <div class="form-row">
             <label for="speed">Speed</label>
             <input id="speed" name="speed" type="number" value="1" step="0.25" min="0.1" />
             <span class="subtle">×</span>
           </div>
 
-
           <div class="cta">
             <button id="run"   class="btn primary" type="button">Run backtest</button>
             <button id="pause" class="btn"         type="button">Pause</button>
             <button id="reset" class="btn"         type="button">Reset</button>
           </div>
-
         </form>
 
         <div class="sep"></div>
@@ -102,7 +130,9 @@
           <li>CAGR:              <strong>—</strong></li>
         </ul>
 
-        <p class="mini subtle">This is a simulated demo to illustrate the agent UX. Not financial advice.</p>
+        <p class="mini subtle">
+          This is a simulated demo to illustrate the agent UX. Not financial advice.
+        </p>
 
         <div class="cta">
           <a class="btn" href="/try.html">← Back</a>
@@ -112,12 +142,10 @@
     </div>
   </main>
 
-  
-
-
+  <!-- Injected site footer -->
   <div id="site-footer"></div>
 
-  <!-- site partials -->
+  <!-- Scripts -->
   <script src="/assets/js/partials.js" defer></script>
   <script type="module" src="/assets/js/try/trader/trader_demo.js"></script>
 </body>
