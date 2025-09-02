@@ -24,6 +24,27 @@ html {
   --g-6: 2rem;                                    /* Large gap */
   --r-2: 8px;                                     /* Border radius */
   --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.1);       /* Card shadow */
+  --ink: #e7eefc;
+  --muted: #a1aab7;
+  --bg-deep: #0a0e1a;
+  --surface-0: #0a0e1a;
+  --surface-1: #10162a;
+  --surface-2: #1e253e;
+  --edge: rgba(255,255,255,.15);
+  --edge-strong: rgba(255,255,255,.25);
+  --glow: rgba(16,185,129,.25);
+  --acc: #10b981;
+  --acc-2: #059669;
+  --grad-start: #6cffb3;
+  --grad-end: #059669;
+  --fg: var(--ink);
+  --brand-1: var(--acc);
+  --brand-2: var(--acc-2);
+
+  --nav-fg: var(--ink);
+  --nav-fg-active: var(--acc);
+  --nav-bg-hover: color-mix(in srgb, var(--acc) 12%, transparent);
+  --nav-shadow-hover: 0 0 12px color-mix(in srgb, var(--acc) 45%, transparent);
 }
 
 

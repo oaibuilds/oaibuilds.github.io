@@ -700,3 +700,12 @@ canvas#oOrb {
 }
 
 .tcard .detail strong { font-weight: 700; color: var(--txt); }
+
+.page-try,
+.page-reader,
+.page-trader {
+  --nav-fg: var(--ink);
+  --nav-fg-active: var(--acc);
+  --nav-bg-hover: color-mix(in srgb, var(--acc) 12%, transparent);
+  --nav-shadow-hover: 0 0 12px color-mix(in srgb, var(--acc) 45%, transparent);
+}
