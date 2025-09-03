@@ -57,7 +57,7 @@ export class Timeline {
       title: 'CSC + HUST MSE Scholarship (Wuhan)',
       detail:
         'Awarded a <strong>CSC + HUST MSE Scholarship</strong> to complete a summer program at ' +
-        '<strong>Huazhong University of Science and Technology (HUST)</strong> focused on:<br><br><ul>' +
+        '<strong>Huazhong University of Science and Technology (HUST)</strong> focused on:<br><ul>' +
         '<li>AI-enabled robotic design and motion control</li>' +
         '<li>Robot simulation, programming, and inspection</li>' +
         '<li>Perception, localization, prediction, and path planning for autonomous vehicles</li>' +
@@ -72,29 +72,34 @@ export class Timeline {
         'Multimodal AI', 'Swarm Intelligence'
       ],
       logos: [
-        { src: '/assets/img/logos/hust.png', alt: 'Huazhong University of Science and Technology (HUST)' }
-      ]
-    },
+          { src: '/assets/img/logos/hust.png', alt: 'Huazhong University of Science and Technology (HUST)' }
+        ]
+      },
 
       {
         id: 't-2025-oproject',
         year: '2025',
         sortYear: 2025,
         cat: 'project',
-        title: 'Launched “The O Project”',
-        detail: 'Vertical AI agents + orchestration layer. First modules: O-Scanner (docs) and O-Trader (signals/backtests).',
-        badges: ['Agents', 'Orchestration']
+        title: 'Launched “The O-Project”',
+        detail:
+          'Kickoff of a long-term ecosystem of vertical AI agents + orchestration layer (vision in progress). First modules: O-Reader (docs, basic GPT triage) and O-Trader (signals/backtests with initial automation).',
+        badges: ['Agents', 'GPT-basic', 'Orchestration']
       },
+
 
       {
         id: 't-2026',
         year: '2026',
         sortYear: 2026,
         cat: 'project',
-        title: 'Scale agent stack',
-        detail: 'O-Core (logic) · O-Stream (pipelines) · O-Vault (memory). Tighten eval loops, reliability & latency for production.',
-        badges: ['Pipelines', 'RAG', 'Eval']
-      }
+        title: 'Expand core agents',
+        detail:
+          'Advance development of O-Core (shared logic & orchestration) and O-Stream (content & publishing pipelines). Early multi-agent coordination and verifiable prompt chains begin to take shape.',
+        badges: ['Pipelines', 'Orchestration', 'Multi-agent']
+      },
+
+
     ].sort((a, b) => a.sortYear - b.sortYear);
 
     // ----- State & observers -----

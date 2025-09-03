@@ -114,7 +114,13 @@
             <p>Today, I’m an <strong>AI Engineering student</strong> at the <strong>Polytechnic University of Catalonia (UPC)</strong> focused on vertical AI agents and Python-based automation systems.</p>
             <blockquote class="quote">"Real learning starts when ideas are built — Build → Test → Improve → Repeat."</blockquote>
             <p>I’m also learning Mandarin to broaden my global perspective and connect with diverse innovation ecosystems.</p>
+            <p style="margin-top:1rem; font-style:italic; color:var(--muted);" title="Goodbye for now, see you in the future">
+              再见，未来见 ! ?
+            </p>
+
+
           </div>
+
 
           <!-- Right: image -->
           <figure class="about-banner">
@@ -161,72 +167,101 @@
       </article>
     </section>
 
+    <div class="divider" role="presentation"></div>
+
     <!-- ========== PROJECTS ========== -->
     <section id="projects" class="container section">
       <article class="card reveal">
         <header><h2>Projects</h2></header>
-        <p><strong>The O-Project</strong> is an evolving ecosystem of <strong>vertical AI agents</strong> — each engineered for a single domain (documents, markets, data streams, orchestration) but designed to interoperate seamlessly.</p>
-        <p>Unlike standalone tools, agents share a <strong>unified orchestration layer</strong> that enables collaboration, scalability, and adaptive intelligence across different contexts.</p>
-        <p>Future modalities will expand deployment options:
-          <strong>in-browser agents</strong> running locally for privacy-first tasks,
-          <strong>remote orchestration</strong> powered by distributed backends,
-          and <strong>LLM-augmented pipelines</strong> for reasoning, enrichment, and decision support.
-        </p>
-        <p>The vision: <strong>modular intelligence</strong> — AI components that scale from simple automations to full agentic architectures, driving measurable real-world impact.</p>
+        <p><strong>The O-Project</strong> is an evolving ecosystem of <strong>vertical AI agents</strong> — currently at the <em>prototype stage</em>. 
+        Today, the tools focus on <strong>automation, structure and orchestration</strong> without real AI reasoning, but the vision is to scale them into 
+        <em>fully agentic systems</em> that interoperate seamlessly across domains.</p>
+
       </article>
 
       <div class="grid cols-2" style="margin-top:var(--g-3)">
         <article class="card reveal">
           <h2>O-Reader</h2>
-          <p><strong>O-Reader</strong> is a <strong>GPT-powered document intelligence tool</strong> that automatically classifies, organizes, and summarizes PDFs.
-            Using <strong>semantic analysis</strong>, it transforms unstructured files into structured knowledge with consistent naming and metadata.</p>
-          <p>O-Reader is designed to streamline workflows — from personal research to enterprise-scale document routing — with local-first processing and extensibility for remote LLMs.</p>
-          <a class="btn" href="https://github.com/oaibuilds/O-Reader" target="_blank" rel="noopener">View on GitHub →</a>
+          <p><strong>O-Reader</strong> is a <strong>document triage and routing tool</strong>. 
+            In its current version it uses <strong>basic GPT-powered text analysis</strong> to classify and summarize PDFs, 
+            but the capabilities are intentionally simple. 
+            The roadmap is to evolve it into a <strong>richer semantic engine</strong> that can tag, enrich and structure documents with contextual knowledge.</p>
+
+                      <a class="btn" href="https://github.com/oaibuilds/O-Reader" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
 
         <article class="card reveal">
           <h2>O-Trader</h2>
-          <p><strong>O-Trader</strong> is an <strong>AI-driven trading framework</strong> designed for disciplined execution, robust backtesting, and long-term capital growth.
-            It integrates <strong>signal detection, risk management, and automated execution</strong> into a modular system that adapts to market dynamics.</p>
-          <p>Built for both experimentation and scalability, O-Trader provides a <strong>sandbox environment</strong> for strategy testing while maintaining a clear path to production-ready automation.</p>
+          <p><strong>O-Trader</strong> is a <strong>market automation and backtesting framework</strong>. 
+            At present it focuses on <em>signal detection, risk control and trade simulation</em> via direct exchange APIs, 
+            <em>without AI decision-making</em>. The vision is to evolve it into an <strong>AI-driven trading agent</strong> 
+            that adapts strategies dynamically and integrates with orchestration layers.</p>
+
           <a class="btn" href="https://github.com/oaibuilds/O-Trader" target="_blank" rel="noopener">View on GitHub →</a>
         </article>
+      </div>
+    </section>
+
+        </section>
+
+    <!-- ========== VISION NOTE ========== -->
+    <section class="container">
+      <div class="highlight" role="note">
+        <p>
+          ⚠️ Current demos (<strong>O-Reader</strong>, <strong>O-Trader</strong>) run with 
+          <em>basic GPT integration</em> but <strong>no real AI decision-making yet</strong>.  
+          The vision is to evolve them into <strong>AI-driven agents</strong> that adapt dynamically, 
+          collaborate through orchestration layers, and scale into production-ready systems.
+        </p>
       </div>
     </section>
 
     <!-- ========== ROADMAP ========== -->
     <section id="roadmap" class="container section">
       <article class="card reveal">
-        <header><h2>Roadmap 2025–2026</h2></header>
+        <header><h2>Roadmap 2025–2027</h2></header>
 
         <div class="roadmap">
           <div class="stage">
-            <h4>Now</h4>
+            <h4>Now (2025)</h4>
             <ul>
-              <li><strong>O-Trader</strong> — Market automation & signal agents</li>
-              <li><strong>O-Reader</strong> — PDF triage & routing</li>
+              <li><strong>O-Reader</strong> — PDF triage, routing & basic GPT summaries</li>
+              <li><strong>O-Trader</strong> — Market sandbox, signals & backtests with initial GPT support</li>            
             </ul>
           </div>
 
           <div class="stage">
-            <h4>Next</h4>
+            <h4>Next (2026)</h4>
             <ul>
-              <li><strong>O-Stream</strong> — LLM-driven insight & content pipelines</li>
-              <li><strong>O-Core</strong> — Modular orchestration & system logic</li>
+              <li><strong>O-Stream</strong> — Content ingestion & publishing pipelines with prompt chains</li>
+              <li><strong>O-Core</strong> — Shared logic, orchestration & early multi-agent coordination</li>
             </ul>
           </div>
 
           <div class="stage">
-            <h4>Later</h4>
+            <h4>Later (2027+)</h4>
             <ul>
-              <li><strong>O-Vault</strong> — Structured memory & knowledge systems</li>
+              <li><strong>O-Insight</strong> — Dashboards for monitoring agent actions & fine-tuning in real time</li>
+              <li><strong>O-Gateway</strong> — Unified interface to connect external APIs & third-party services</li>
             </ul>
           </div>
         </div>
       </article>
     </section>
+
   </main>
 
+  <!-- Thought-provoking note + CTA -->
+  <div class="after-footer" style="text-align:center; margin:2rem 0 2rem 0;">
+    <em style="display:block; font-size:.95rem; color:var(--muted); margin-bottom:.8rem;">
+      “We are on the verge of a transition — more important than the Industrial Revolution.”<br>
+      — Geoffrey Hinton
+    </em>
+    <a href="https://www.linkedin.com/in/oriolmartz" target="_blank" rel="noopener"
+      style="font-size:.9rem; color:var(--brand-1); text-decoration:none; font-weight:600;">
+      → Follow me on LinkedIn
+    </a>
+  </div>
   <!-- Footer injected via partials.js -->
   <div id="site-footer"></div>
 
