@@ -227,7 +227,7 @@ nav.primary a:hover { color: var(--txt); }
   margin: .7rem 0 0;
   font-size: var(--fs-2);
   font-weight: 600;
-  background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
+  background: linear-gradient(90deg, var(--grad-medium), var(--grad-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -351,7 +351,7 @@ canvas#oOrb {
 .card h2 {
   margin: 0 0 .35rem;
   font-size: 1.1rem;
-  color: var(--brand-2);
+  color: var(--grad-medium);
 }
 
 .card p { margin: .35rem 0 .9rem; color: var(--muted); }

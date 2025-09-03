@@ -36,6 +36,7 @@ html {
   --acc: #10b981;
   --acc-2: #059669;
   --grad-start: #6cffb3;
+  --grad-medium: #6fd6a1;
   --grad-end: #059669;
   --fg: var(--ink);
   --brand-1: var(--acc);

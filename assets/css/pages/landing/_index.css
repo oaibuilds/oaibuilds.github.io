@@ -58,6 +58,7 @@
   --btn-primary-shadow: 0 8px 22px color-mix(in srgb, var(--acc-2) 22%, transparent);
   --btn-primary-shadow-hover: 0 14px 30px color-mix(in srgb, var(--acc-2) 26%, transparent);
 
+
   /* scrollbars */
   --scroll-c1: var(--acc);
   --scroll-c2: var(--acc-2);
@@ -120,6 +121,12 @@
   border: 1px solid var(--edge);
 }
 
+.card .btn {
+  display: block;        
+  margin: 1rem auto 0;    
+  text-align: center;     
+  width: fit-content;     
+}
 
 /* ===================== About Section ===================== */
 .about-wrap {
