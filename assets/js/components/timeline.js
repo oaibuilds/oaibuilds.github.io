@@ -30,7 +30,6 @@ export class Timeline {
         { src: '/assets/img/logos/itic.png', alt: 'Institut TIC de Barcelona' },
         { src: '/assets/img/logos/inetum.png', alt: 'Inetum' }
       ]
-
     },
 
     {
