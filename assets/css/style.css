@@ -227,7 +227,7 @@ nav.primary a:hover { color: var(--txt); }
   margin: .7rem 0 0;
   font-size: var(--fs-2);
   font-weight: 600;
-  background: linear-gradient(90deg, var(--grad-medium), var(--grad-end));
+  background: var(--grad-medium);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
