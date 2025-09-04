@@ -526,8 +526,6 @@ canvas#oOrb {
   transition: transform .2s ease;
 }
 
-.tcard .detail strong { font-weight: 700; color: var(--txt); }
-
 .page-try,
 .page-reader,
 .page-trader {
