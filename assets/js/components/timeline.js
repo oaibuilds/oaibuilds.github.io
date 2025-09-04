@@ -81,7 +81,7 @@ export class Timeline {
         year: '2025',
         sortYear: 2025,
         cat: 'project',
-        title: 'Launched “The O-Project”',
+        title: 'Launched “O-Project”',
         detail:
           'Kickoff of a long-term ecosystem of vertical AI agents + orchestration layer (vision in progress). First modules: O-Reader (docs, basic GPT triage) and O-Trader (signals/backtests with initial automation).',
         badges: ['Agents', 'GPT-basic', 'Orchestration']
