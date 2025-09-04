@@ -113,6 +113,12 @@
   margin-inline: auto;
 }
 
+.o-project-big {
+  font-size: 1.25em; 
+  font-weight: 700;
+}
+
+
 
 /* ===================== Shared containers ===================== */
 .card,
@@ -176,6 +182,164 @@
   color: var(--muted);
   background: rgba(0, 0, 0, .22);
   border-top: 1px solid var(--edge);
+}
+
+/* ===================== Vertical Interactive Timeline ===================== */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--g-5);
+}
+
+.timeline .rail {
+  position: sticky; top: 72px;
+  align-self: start; height: 70vh;
+  display: flex; flex-direction: column;
+}
+
+.rail .yearbox {
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.25)), var(--card);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--r-2);
+  padding: 1rem;
+  display: grid; gap: .35rem;
+  align-content: start;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.35),
+    inset 0 1px 2px rgba(255,255,255,.06);
+}
+
+.rail .yearbox .label {
+  font-size: .85rem; font-weight: 700;
+  color: var(--muted);
+}
+
+.rail .yearbox .value {
+  font-size: 1.75rem; font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.rail .filters {
+  display: flex; flex-wrap: wrap;
+  gap: .5rem; margin-top: var(--g-3);
+}
+
+.chip {
+  padding: .35rem .6rem;
+  font: 600 .9rem var(--ff);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  color: #fff;
+  background: var(--grad-end);
+  border-color: transparent;
+}
+
+.rail .progresswrap {
+  position: relative; flex: 1;
+  margin-top: var(--g-4);
+}
+
+.rail .progress {
+  position: absolute; left: 50%;
+  transform: translateX(-50%);
+  top: 0; bottom: 0; width: 4px;
+  background: linear-gradient(180deg, transparent, var(--border), transparent);
+  border-radius: 999px;
+}
+
+.rail .progress .fill {
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 0%;
+  background: var(--grad-end);
+  border-radius: 999px;
+  box-shadow: 0 0 16px rgba(124, 58, 237, .4);
+}
+
+.stream { position: relative; }
+
+.stream .item { position: relative; scroll-margin-top: 84px; }
+
+.list {
+  display: grid; gap: var(--g-3);
+  max-height: 66vh; overflow: auto;
+  scroll-snap-type: y proximity;
+}
+
+.list::-webkit-scrollbar { width: 12px; }
+.list::-webkit-scrollbar-thumb {
+  background: var(--grad-end);
+  border-radius: 8px;
+}
+
+.tcard { position: relative; scroll-snap-align: start; }
+
+.tcard .meta {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: .35rem;
+}
+
+.tcard time {
+  font-weight: 700; color: #8c93a3;
+}
+
+@media (prefers-color-scheme: light) {
+  .tcard time { color: #2b2f36; }
+}
+
+.tcard .cat { font-weight: 700; font-size: .8rem; color: var(--muted); }
+
+.tcard h3 {
+  margin: .25rem 0 .2rem;
+  font-size: 1.05rem; color: var(--brand-2);
+}
+
+.tcard .detail { margin: .25rem 0 0; color: var(--muted); }
+
+.tcard::before {
+  content: "";
+  position: absolute;
+  left: -32px; top: 18px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #fff, var(--brand-1));
+  box-shadow: 0 0 10px rgba(124, 58, 237, .5);
+}
+
+.connector {
+  position: absolute;
+  left: -26px; top: 32px;
+  width: 0; height: calc(100% + var(--g-3));
+  border-left: 2px solid var(--border);
+}
+
+.tcard [data-collapsible] {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s ease;
+}
+
+.tcard[aria-expanded="true"] [data-collapsible] { max-height: 220px; }
+
+.tcard .toggle { position: absolute; right: .8rem; top: .8rem; }
+
+.year-section { position: relative; display: grid; gap: var(--g-3); }
+
+.year-header {
+  position: static; top: auto; width: max-content;
+  padding: .1rem 0; border: none; border-radius: 0;
+  background: transparent; box-shadow: none; pointer-events: auto; z-index: auto;
+}
+
+.year-header .y { font-weight: 800; letter-spacing: .02em; color: var(--txt); }
+
+.year-header small {
+  margin-left: .5rem; font-weight: 700;
+  color: var(--muted); opacity: .7;
 }
 
 
@@ -252,6 +416,20 @@
   flex-direction: column;
   gap: 20px;
 }
+
+/* ===================== Roadmap ===================== */
+.roadmap { display: grid; gap: var(--g-3); }
+
+@media (min-width: 900px) {
+  .roadmap { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+.stage h4 {
+  margin: 0 0 .3rem;
+  font-size: 1rem; color: var(--brand-1);
+}
+
+.stage ul { margin: .25rem 0 0; padding-left: 1.1rem; }
 
 
 /* ===================== Logos ===================== */
