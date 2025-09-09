@@ -125,6 +125,7 @@
 .ai-banner {
   background-color: var(--surface-1);
   border: 1px solid var(--edge);
+  margin-top: 0.3rem;
 }
 
 .card .btn {
