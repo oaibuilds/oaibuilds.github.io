@@ -380,16 +380,17 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: .6ch;
-  margin: 0 0 .4rem 0;
+  margin: 0.8rem 0 .4rem 0; /* 👈 antes era 0 arriba */
   font-weight: 700;
-  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   color: var(--ink);
   background: none;
   text-shadow: none;
 }
 
+
 .timeline .stream h3 > time {
-  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   font-weight: 800;
   color: #cfd6e6;
 }
