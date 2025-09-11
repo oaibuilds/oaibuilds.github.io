@@ -101,7 +101,7 @@
   line-height: 1.55;
   color: var(--muted);
   max-width: 720px;
-  margin-top: 0.6rem;
+  margin-top: 0rem;
   animation: fadeUp .6s ease both;
 }
 
