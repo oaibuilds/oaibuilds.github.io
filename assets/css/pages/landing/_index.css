@@ -88,6 +88,14 @@
   -webkit-text-fill-color: transparent;
 }
 
+.ai-accent {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: currentColor !important; /* hereda color normal del texto */
+  color: inherit !important;
+}
+
+
 .page-landing .h-sub {
   font-size: clamp(0.85rem, 1.5vw, 1.05rem);
   line-height: 1.55;
