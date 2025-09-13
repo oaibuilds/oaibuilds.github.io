@@ -80,6 +80,7 @@
 /* ===================== Hero Section ===================== */
 .page-landing .h-title {
   font-size: clamp(3rem, 6vw, 5rem);
+  margin-top: 0.5rem;
 }
 
 .page-landing .h-title .highlight {
@@ -388,7 +389,7 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: .6ch;
-  margin: 0.8rem 0 .4rem 0; /* 👈 antes era 0 arriba */
+  margin: 0.8rem 0 .4rem 0; 
   font-weight: 700;
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   color: var(--ink);
