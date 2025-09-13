@@ -5,7 +5,14 @@ header.site {
   z-index: 1000;
 
   /* More opaque so it doesn’t look gray against light backgrounds */
-  background: linear-gradient(180deg, rgba(10,14,26,.96), rgba(10,14,26,.94));
+  background: linear-gradient(
+    180deg,
+    rgba(34,211,238,0.12),  /* subtle cyan glow */
+    rgba(16,22,42,0.8) 30%,
+    rgba(16,22,42,0.6) 100%
+  );
+
+
   border-bottom: 1px solid rgba(255,255,255,.08);
 
   /* Disable blur by default (prevents the header from looking gray on landing) */
@@ -16,7 +23,12 @@ header.site {
 /* If the browser supports blur, apply a subtle blur without whitening */
 @supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
   header.site.use-glass {
-    background: linear-gradient(180deg, rgba(10,14,26,.92), rgba(10,14,26,.88));
+    background: linear-gradient(
+    180deg,
+    rgba(34,211,238,0.12),  /* subtle cyan glow */
+    rgba(16,22,42,0.8) 30%,
+    rgba(16,22,42,0.6) 100%
+  );
     -webkit-backdrop-filter: saturate(140%) blur(6px);
     backdrop-filter: saturate(140%) blur(6px);
   }
@@ -27,7 +39,7 @@ header.site .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .9rem 0;
+  padding: .6rem 0;
 }
 
 /* Brand */

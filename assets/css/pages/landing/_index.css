@@ -91,7 +91,7 @@
 .ai-accent {
   background: none !important;
   -webkit-background-clip: initial !important;
-  -webkit-text-fill-color: currentColor !important; /* hereda color normal del texto */
+  -webkit-text-fill-color: currentColor !important; 
   color: inherit !important;
 }
 
@@ -133,7 +133,7 @@
 .ai-banner {
   background-color: var(--surface-1);
   border: 1px solid var(--edge);
-  margin-top: 0.3rem;
+  margin-top: 0.1rem;
 }
 
 .card .btn {
@@ -152,8 +152,8 @@
 
 .about-content {
   display: flex;
-  align-items: center; /* centra verticalmente texto e imagen */
-  gap: 2rem; /* espacio entre texto e imagen */
+  align-items: center; 
+  gap: 2rem; 
 }
 
 

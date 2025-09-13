@@ -1,99 +1,142 @@
-/* ===================== Buttons (Global) ===================== */
+/* ============ Buttons (Global) ============ */
 
-/* ---------- Base button ---------- */
-.btn,
-a.btn,
-button.btn {
+/* Default variables (can be adjusted in :root) */
+:root{
+  --btn-radius: 1rem;
+  --btn-gap: .55rem;
+  --btn-fs: clamp(.96rem, .38vw + .9rem, 1.05rem);
+  --btn-pad-y: .72rem;
+  --btn-pad-x: 1.05rem;
+}
+
+/* Base button styles */
+.btn, a.btn, button.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
-
-  padding: .7rem 1rem;
-  border: 1px solid rgba(255, 255, 255, .12);
-  border-radius: 14px;
-
+  gap: var(--btn-gap);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--btn-radius);
   font-weight: 700;
+  font-size: var(--btn-fs);
+  line-height: 1.1;
+  white-space: nowrap;
   text-decoration: none;
   color: var(--txt, #e7eefc);
-  background: rgba(255, 255, 255, .03); /* subtle glass neutral */
-
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease,
-    border-color .2s ease,
-    background .2s ease;
-
+  background: rgba(255,255,255,.03);
+  transition: transform .15s ease, box-shadow .15s ease,
+              border-color .2s ease, background .2s ease, opacity .2s ease;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* Button states */
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+.btn:active { transform: translateY(0) scale(.985); }
+.btn:focus-visible { outline: 2px solid var(--acc-2, #22d3ee); outline-offset: 2px; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity:.55; cursor:not-allowed; box-shadow:none; transform:none; }
 
-/* ---------- Hover / Focus ---------- */
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--acc-2, #22d3ee);
-  outline-offset: 2px;
-}
-
-
-/* ---------- Primary (cyan style) ---------- */
-.btn.primary {
-  background: linear-gradient(180deg, rgba(34, 211, 238, .18), rgba(34, 211, 238, .08));
-  border-color: rgba(34, 211, 238, .35);
+/* Primary button */
+.btn.primary{
+  background: linear-gradient(180deg, rgba(34,211,238,.18), rgba(34,211,238,.08));
+  border-color: rgba(34,211,238,.35);
   color: #eaffff;
 }
 
-.btn.primary:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 12px 26px rgba(34, 211, 238, .18),
-    inset 0 0 24px rgba(34, 211, 238, .12);
+/* ============ CTA group ============ */
+.cta{
+  display:flex; flex-wrap:wrap;
+  gap: 0.85rem;               /* spacing between buttons */
+  margin-top: var(--g-4);
+  align-items:center;
+  justify-content:flex-start;
 }
 
+/* Main CTA (Try) */
+.cta .btn-try{
+  --btn-fs: clamp(1.1rem, .6vw + 1rem, 1.28rem);
+  --btn-pad-y: 1rem;   /* same vertical size as explore and contact */
+  --btn-pad-x: 2.4rem;
 
-/* ---------- Ghost (border + text, no fill) ---------- */
-.btn.ghost {
-  background: transparent;
-  border-color: rgba(255, 255, 255, .14);
-  color: var(--txt, #e7eefc);
+  font-weight: 800;
+  border-radius: calc(var(--btn-radius) + .2rem);
+  box-shadow: var(--btn-primary-shadow);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  animation: pulseGlow 2.8s ease-in-out infinite;
+}
+.cta .btn-try:hover{
+  box-shadow: var(--btn-primary-shadow-hover);
+  transform: translateY(-2px) scale(1.03);
 }
 
-.btn.ghost:hover {
-  background: rgba(255, 255, 255, .06);
+/* Subtle diagonal shine (techy effect) */
+.cta .btn-try::after{
+  content:"";
+  position:absolute; inset:-120% -40%;
+  background: linear-gradient(60deg, transparent 40%, rgba(255,255,255,.22) 50%, transparent 60%);
+  transform: translateX(-30%) rotate(12deg);
+  opacity:.0; pointer-events:none;
+  mix-blend-mode: screen;
+  animation: sheen 4.5s ease-in-out infinite;
+  z-index:-1;
 }
 
-
-/* ---------- Disabled ---------- */
-.btn.disabled,
-.btn[aria-disabled="true"],
-button.btn:disabled {
-  opacity: .55;
-  cursor: not-allowed;
-  filter: grayscale(.1);
-  box-shadow: none;
-  transform: none;
-}
-
-
-/* ---------- Optional sizes ---------- */
-.btn.sm {
-  padding: .55rem .85rem;
-  border-radius: 12px;
+/* Secondary CTA (Explore) */
+.cta .btn-explore{
+  --btn-fs: clamp(.98rem, .3vw + .9rem, 1.05rem);
+  --btn-pad-y: 1rem;   /* same as try */
+  --btn-pad-x: 1.6rem;
   font-weight: 600;
+  opacity:.95;
+}
+.cta .btn-explore:hover{
+  opacity:1;
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(0,255,255,.15);
 }
 
-.btn.lg {
-  padding: .9rem 1.25rem;
-  border-radius: 16px;
+/* Tertiary CTA (Contact) */
+.cta .btn-contact{
+  --btn-fs: clamp(.94rem, .25vw + .9rem, 1rem);
+  --btn-pad-y: 1rem;   /* same as try */
+  --btn-pad-x: 1.3rem;
+  font-weight: 500;
+  opacity:.85;
+  border:1px solid var(--btn-primary-border);
+  border-radius:.9rem;
+}
+.cta .btn-contact:hover{
+  opacity:1;
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,255,255,.12);
 }
 
+/* ============ Animations ============ */
+@keyframes pulseGlow{
+  0%,100%{ box-shadow: 0 0 0 rgba(0,255,255,0), var(--btn-primary-shadow); }
+  50%    { box-shadow: 0 0 22px rgba(0,255,255,.34), var(--btn-primary-shadow-hover); }
+}
+@keyframes sheen{
+  0%,70% { opacity: 0; transform: translateX(-35%) rotate(12deg); }
+  85%    { opacity:.35; transform: translateX(25%) rotate(12deg); }
+  100%   { opacity:0; transform: translateX(55%) rotate(12deg); }
+}
 
-/* ---------- Inside cards/lists ---------- */
-.card .btn {
-  flex: 1 1 auto;            /* let gap work correctly */
-  max-width: max-content;    /* prevent stretching */
+/* Responsive adjustments */
+@media (max-width: 720px){
+  .cta{ justify-content:center; }
+  .cta > .btn{ width:100%; justify-content:center; }
+  .cta .btn-try{ --btn-fs: 1.18rem; --btn-pad-y: 1.1rem; --btn-pad-x: 1.8rem; }
+  .cta .btn-explore{ --btn-fs: 1rem; --btn-pad-y: 1.1rem; --btn-pad-x: 1.3rem; }
+  .cta .btn-contact{ --btn-fs: .95rem; --btn-pad-y: 1.1rem; --btn-pad-x: 1.1rem; }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .btn, .cta .btn-try{ transition:none; }
+  .cta .btn-try{ animation:none; }
+  .cta .btn-try::after{ animation:none; opacity:0; }
 }
